@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "controller.h"
+#include "keyboard.h"
 #include "game.h"
 #include "renderer.h"
 
@@ -13,7 +13,7 @@ int main() {
   constexpr std::size_t kGridHeight{32};
 
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
-  Controller controller;
+  Keyboard controller;
   Game game(kGridWidth, kGridHeight);
   game.Run(controller, renderer, kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";

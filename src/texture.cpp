@@ -25,6 +25,7 @@ bool Texture::loadFromFile(std::string path) {
 
 	//Load image at specified path
 	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+
 	if (loadedSurface == nullptr) {
         std::cerr 
             << "Unable to load image from: " 
@@ -49,6 +50,7 @@ bool Texture::loadFromFile(std::string path) {
 
     //Create texture from surface pixels
     newTexture = SDL_CreateTextureFromSurface(_renderer, loadedSurface);
+    
     if (newTexture == nullptr) {
         std::cerr 
             << "Unable to create texture from: " 

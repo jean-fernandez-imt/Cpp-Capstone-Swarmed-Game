@@ -1,9 +1,9 @@
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
 
 #include "snake.h"
 
-class Controller {
+class Keyboard {
  public:
   void HandleInput(bool &running, Snake &snake) const;
 

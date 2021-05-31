@@ -1,6 +1,7 @@
-#include "game.h"
+#include <SDL2/SDL.h>
 #include <iostream>
-#include "SDL.h"
+
+#include "game.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),

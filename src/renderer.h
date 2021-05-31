@@ -1,8 +1,9 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include <SDL2/SDL.h>
 #include <vector>
-#include "SDL.h"
+
 #include "snake.h"
 
 class Renderer {

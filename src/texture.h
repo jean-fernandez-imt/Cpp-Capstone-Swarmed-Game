@@ -4,11 +4,11 @@
 #include <string>
 
 //Texture wrapper class
-class Texture
-{
+class Texture {
+
 	public:
 		//Initializes variables
-		Texture();
+		Texture(SDL_Renderer* renderer);
 
 		//Deallocates memory
 		~Texture();
@@ -34,9 +34,11 @@ class Texture
 
 	private:
 		//The actual hardware texture
-		SDL_Texture* texture;
+		SDL_Texture* _texture;
+        SDL_Renderer* _renderer;
 
 		//Image dimensions
-		int width;
-		int height;
+		int _width;
+		int _height;
+
 };

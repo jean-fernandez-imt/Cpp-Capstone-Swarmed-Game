@@ -2,9 +2,8 @@
 
 #include "texture.h"
 
-Texture::Texture(SDL_Renderer* renderer) {
+Texture::Texture() {
 	//Initialize
-    _renderer = renderer;
 	_texture = nullptr;
 	_width = 0;
 	_height = 0;
@@ -27,14 +26,8 @@ bool Texture::loadFromFile(std::string path) {
 	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
 
 	if (loadedSurface == nullptr) {
-        std::cerr 
-            << "Unable to load image from: " 
-            << path.c_str() 
-            << std::endl;
-        std::cerr 
-            << " SDL2_IMG_Error:  " 
-            << IMG_GetError()
-            << std::endl;
+        std::cerr << "Unable to load image from: " << path.c_str() << std::endl;
+        std::cerr << " SDL2_IMG_Error:  " << IMG_GetError() << std::endl;
         return false;
 	} else {
 		//Color key image

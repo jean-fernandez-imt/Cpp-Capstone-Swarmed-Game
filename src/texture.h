@@ -11,7 +11,7 @@ class Texture {
 
 	public:
 		//Initializes variables
-		Texture(SDL_Renderer* renderer);
+		Texture();
 
 		//Deallocates memory
 		~Texture();
@@ -38,7 +38,6 @@ class Texture {
 	private:
 		//The actual hardware texture
 		SDL_Texture* _texture;
-        SDL_Renderer* _renderer;
 
 		//Image dimensions
 		int _width;

@@ -19,8 +19,7 @@ Renderer::Renderer(const std::size_t screen_width,
   }
 
   //Set texture filtering to linear
-  if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
-  {
+  if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" )) {
     std::cerr << "Warning! Linear texture filtering not enabled." << std::endl;
   }
 
@@ -40,7 +39,12 @@ Renderer::Renderer(const std::size_t screen_width,
   }
 
   // Create renderer
-  sdl_renderer = SDL_CreateRenderer(sdl_window, -1, SDL_RENDERER_ACCELERATED);
+  sdl_renderer = 
+    SDL_CreateRenderer(
+      sdl_window, 
+      -1, 
+      SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
   if (nullptr == sdl_renderer) {
     std::cerr << "Renderer could not be created." << std::endl;
     std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
@@ -48,8 +52,7 @@ Renderer::Renderer(const std::size_t screen_width,
 
   //Initialize PNG loading
   int imgFlags = IMG_INIT_PNG;
-  if( !( IMG_Init( imgFlags ) & imgFlags ) )
-  {
+  if(!( IMG_Init( imgFlags ) & imgFlags )) {
     std::cerr << "SDL2_image could not initialize." << std::endl;
     std::cerr << "SDL2_Error: " << IMG_GetError() << std::endl;
   }
@@ -61,6 +64,10 @@ Renderer::~Renderer() {
   SDL_DestroyWindow(sdl_window);
   IMG_Quit();
   SDL_Quit();
+}
+
+SDL_Renderer* Renderer::getRenderer() {
+  return sdl_renderer;
 }
 
 void Renderer::Render(Snake const snake, SDL_Point const &food) {

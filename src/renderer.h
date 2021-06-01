@@ -5,6 +5,7 @@
 #include <SDL2/SDL_image.h>
 #include <vector>
 
+#include "texture.h"
 #include "snake.h"
 
 class Renderer {
@@ -19,7 +20,8 @@ class Renderer {
 
     SDL_Renderer* getRenderer();
 
-    void Render(Snake const snake, SDL_Point const &food);
+    //void Render(Snake const snake, SDL_Point const &food);
+    void render(std::vector<Texture*> textures);
     void UpdateWindowTitle(int score, int fps);
 
   private:

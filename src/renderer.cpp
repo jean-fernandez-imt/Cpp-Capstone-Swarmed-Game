@@ -70,6 +70,7 @@ SDL_Renderer* Renderer::getRenderer() {
   return sdl_renderer;
 }
 
+/*
 void Renderer::Render(Snake const snake, SDL_Point const &food) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
@@ -105,6 +106,11 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
 
   // Update Screen
   SDL_RenderPresent(sdl_renderer);
+}
+*/
+
+void Renderer::render(std::vector<Texture*> textures) {
+  textures[0]->render(0, 0);
 }
 
 void Renderer::UpdateWindowTitle(int score, int fps) {

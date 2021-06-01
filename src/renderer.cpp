@@ -5,7 +5,8 @@
 
 Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
-                   const std::size_t grid_width, const std::size_t grid_height)
+                   const std::size_t grid_width, 
+                   const std::size_t grid_height)
     : screen_width(screen_width),
       screen_height(screen_height),
       grid_width(grid_width),
@@ -13,30 +14,52 @@ Renderer::Renderer(const std::size_t screen_width,
 
   // Initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-    std::cerr << "SDL could not initialize.\n";
-    std::cerr << "SDL2_Error: " << SDL_GetError() << "\n";
+    std::cerr << "SDL could not initialize." << std::endl;
+    std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
+  }
+
+  //Set texture filtering to linear
+  if( !SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" ) )
+  {
+    std::cerr << "Warning! Linear texture filtering not enabled." << std::endl;
   }
 
   // Create Window
-  sdl_window = SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED,
-                                SDL_WINDOWPOS_CENTERED, screen_width,
-                                screen_height, SDL_WINDOW_SHOWN);
+  sdl_window = 
+    SDL_CreateWindow(
+      "Game", 
+      SDL_WINDOWPOS_CENTERED,
+      SDL_WINDOWPOS_CENTERED, 
+      screen_width,
+      screen_height, 
+      SDL_WINDOW_SHOWN);
 
   if (nullptr == sdl_window) {
-    std::cerr << "Window could not be created.\n";
-    std::cerr << " SDL_Error: " << SDL_GetError() << "\n";
+    std::cerr << "Window could not be created." << std::endl;
+    std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
   }
 
   // Create renderer
   sdl_renderer = SDL_CreateRenderer(sdl_window, -1, SDL_RENDERER_ACCELERATED);
   if (nullptr == sdl_renderer) {
-    std::cerr << "Renderer could not be created.\n";
-    std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
+    std::cerr << "Renderer could not be created." << std::endl;
+    std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
+  }
+
+  //Initialize PNG loading
+  int imgFlags = IMG_INIT_PNG;
+  if( !( IMG_Init( imgFlags ) & imgFlags ) )
+  {
+    std::cerr << "SDL2_image could not initialize." << std::endl;
+    std::cerr << "SDL2_Error: " << IMG_GetError() << std::endl;
   }
 }
 
+// Destroy SDL elements with appropriate methods.
 Renderer::~Renderer() {
+  SDL_DestroyRenderer(sdl_renderer);
   SDL_DestroyWindow(sdl_window);
+  IMG_Quit();
   SDL_Quit();
 }
 

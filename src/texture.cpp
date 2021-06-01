@@ -2,8 +2,9 @@
 
 #include "texture.h"
 
-Texture::Texture() {
+Texture::Texture(SDL_Renderer* renderer) {
 	//Initialize
+    _renderer = renderer;
 	_texture = nullptr;
 	_width = 0;
 	_height = 0;
@@ -14,7 +15,7 @@ Texture::~Texture() {
 	release();
 }
 
-bool Texture::loadFromFile(std::string path) {
+void Texture::loadFromFile(std::string path) {
 
 	//Get rid of preexisting texture
 	release();
@@ -27,8 +28,7 @@ bool Texture::loadFromFile(std::string path) {
 
 	if (loadedSurface == nullptr) {
         std::cerr << "Unable to load image from: " << path.c_str() << std::endl;
-        std::cerr << " SDL2_IMG_Error:  " << IMG_GetError() << std::endl;
-        return false;
+        std::cerr << "SDL2_IMG_Error: " << IMG_GetError() << std::endl;
 	} else {
 		//Color key image
 		SDL_SetColorKey(
@@ -45,15 +45,8 @@ bool Texture::loadFromFile(std::string path) {
     newTexture = SDL_CreateTextureFromSurface(_renderer, loadedSurface);
     
     if (newTexture == nullptr) {
-        std::cerr 
-            << "Unable to create texture from: " 
-            << path.c_str() 
-            << std::endl;
-        std::cerr 
-            << " SDL2_Error:  " 
-            << SDL_GetError()
-            << std::endl;
-        return false;
+        std::cerr << "Unable to create texture from: " << path.c_str() << std::endl;
+        std::cerr << " SDL2_Error: " << SDL_GetError() << std::endl;
     } else {
         //Get image dimensions
         _width = loadedSurface->w;
@@ -65,7 +58,6 @@ bool Texture::loadFromFile(std::string path) {
 
 	//Return success
 	_texture = newTexture;
-	return _texture != nullptr;
 }
 
 void Texture::release() {

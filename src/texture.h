@@ -11,13 +11,13 @@ class Texture {
 
 	public:
 		//Initializes variables
-		Texture();
+		Texture(SDL_Renderer* renderer);
 
 		//Deallocates memory
 		~Texture();
 
 		//Loads image at specified path
-		bool loadFromFile(std::string path);
+		void loadFromFile(std::string path);
 		
 		//Deallocates texture
 		void release();
@@ -38,6 +38,7 @@ class Texture {
 	private:
 		//The actual hardware texture
 		SDL_Texture* _texture;
+		SDL_Renderer* _renderer;
 
 		//Image dimensions
 		int _width;

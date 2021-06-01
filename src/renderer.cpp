@@ -19,7 +19,7 @@ Renderer::Renderer(const std::size_t screen_width,
   }
 
   //Set texture filtering to linear
-  if(!SDL_SetHint( SDL_HINT_RENDER_SCALE_QUALITY, "1" )) {
+  if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
     std::cerr << "Warning! Linear texture filtering not enabled." << std::endl;
   }
 
@@ -33,7 +33,7 @@ Renderer::Renderer(const std::size_t screen_width,
       screen_height, 
       SDL_WINDOW_SHOWN);
 
-  if (nullptr == sdl_window) {
+  if (sdl_window == nullptr) {
     std::cerr << "Window could not be created." << std::endl;
     std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
   }
@@ -52,7 +52,7 @@ Renderer::Renderer(const std::size_t screen_width,
 
   //Initialize PNG loading
   int imgFlags = IMG_INIT_PNG;
-  if(!( IMG_Init( imgFlags ) & imgFlags )) {
+  if(!(IMG_Init( imgFlags ) & imgFlags)) {
     std::cerr << "SDL2_image could not initialize." << std::endl;
     std::cerr << "SDL2_Error: " << IMG_GetError() << std::endl;
   }

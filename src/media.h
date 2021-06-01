@@ -6,6 +6,7 @@
 
 #include "texture.h"
 
+// Class for loading textures needed for the game
 class Media {
     public:
         Media(SDL_Renderer* renderer);
@@ -18,6 +19,7 @@ class Media {
 
     private:
         std::vector<Texture*> _textures;
+        SDL_Renderer* _renderer;
 };
 
 #endif

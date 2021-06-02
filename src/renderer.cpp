@@ -33,7 +33,7 @@ Renderer::Renderer(const std::size_t screen_width,
       screen_height, 
       SDL_WINDOW_SHOWN);
 
-  if (sdl_window == nullptr) {
+  if (sdl_window == NULL) {
     std::cerr << "Window could not be created." << std::endl;
     std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
   }
@@ -45,10 +45,13 @@ Renderer::Renderer(const std::size_t screen_width,
       -1, 
       SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-  if (nullptr == sdl_renderer) {
+  if (sdl_renderer == NULL) {
     std::cerr << "Renderer could not be created." << std::endl;
     std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
   }
+
+  //Initialize renderer color
+	SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
   //Initialize PNG loading
   int imgFlags = IMG_INIT_PNG;

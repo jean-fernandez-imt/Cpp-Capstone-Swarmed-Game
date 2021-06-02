@@ -18,7 +18,7 @@ void Media::loadMedia() {
     Texture mainPlayer(_renderer);
 
     // Load Textures from files
-    mainPlayer.loadFromFile("../textures/testTexture.png");
+    mainPlayer.loadFromFile("testTexture.png");
 
     // Add Texture pointers to _textures.
     _textures.push_back(&mainPlayer);
@@ -30,7 +30,7 @@ void Media::loadMedia() {
 
 bool Media::checkMedia() {
     for (Texture* texture: _textures) {
-        if (texture == nullptr) {
+        if (texture->getTexture() == NULL) {
             return false;
         }
     }

@@ -38,11 +38,12 @@ int main(int argc, char* args[]) {
     }
 
     //Clear screen
-    SDL_SetRenderDrawColor(rendererPtr, 0xFF, 0xFF, 0xFF, 0xFF );
+    //SDL_SetRenderDrawColor(rendererPtr, 0xFF, 0xFF, 0xFF, 0xFF );
     SDL_RenderClear(rendererPtr);
 
     //renderer.render(textures);
-    textures[0]->render(250, 250);
+
+    SDL_RenderCopy(rendererPtr, textures[0]->getTexture(), NULL, NULL);
 
     //Update screen
     SDL_RenderPresent(rendererPtr);

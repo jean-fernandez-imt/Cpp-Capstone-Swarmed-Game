@@ -24,6 +24,7 @@ class Texture {
 
 		SDL_Texture* getTexture();
 		
+		/*
 		//Renders texture at given point
 		void render(
             int x, 
@@ -32,20 +33,12 @@ class Texture {
             double angle = 0.0, 
             SDL_Point* center = NULL, 
             SDL_RendererFlip flip = SDL_FLIP_NONE);
-
-		//Gets image dimensions
-		int getWidth();
-		int getHeight();
+		*/
 
 	private:
 		//The actual hardware texture
 		SDL_Texture* _texture;
 		SDL_Renderer* _renderer;
-
-		//Image dimensions
-		int _width;
-		int _height;
-
 };
 
 #endif

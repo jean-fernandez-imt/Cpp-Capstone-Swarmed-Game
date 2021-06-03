@@ -2,12 +2,9 @@
 
 #include "texture.h"
 
-Texture::Texture(SDL_Renderer* renderer) {
+Texture::Texture(SDL_Renderer* renderer): _renderer(renderer) {
 	//Initialize
-    _renderer = renderer;
 	_texture = NULL;
-	_width = 0;
-	_height = 0;
 }
 
 Texture::~Texture() {
@@ -16,9 +13,6 @@ Texture::~Texture() {
 }
 
 void Texture::loadFromFile(std::string path) {
-
-	//Get rid of preexisting texture
-	//release();
 
 	//The final texture
 	SDL_Texture* newTexture = NULL;
@@ -52,8 +46,6 @@ void Texture::release() {
 		SDL_DestroyTexture(_texture);
 		_texture = NULL;
         _renderer = NULL;
-		_width = 0;
-		_height = 0;
 	}
 }
 
@@ -61,6 +53,7 @@ SDL_Texture* Texture::getTexture() {
 	return _texture;
 }
 
+/*
 void Texture::render(
     int x, 
     int y, 
@@ -80,13 +73,5 @@ void Texture::render(
 
 	//Render to screen
 	SDL_RenderCopyEx(_renderer, _texture, crop, &renderQuad, angle, center, flip );
-
 }
-
-int Texture::getWidth() {
-	return _width;
-}
-
-int Texture::getHeight() {
-	return _height;
-}
+*/

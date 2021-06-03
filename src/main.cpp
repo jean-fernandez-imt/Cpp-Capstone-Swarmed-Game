@@ -1,19 +1,22 @@
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 
 #include "keyboard.h"
 #include "game.h"
 #include "renderer.h"
 #include "media.h"
+#include "texture.h"
 
 int main(int argc, char* args[]) {
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
-  constexpr std::size_t kScreenWidth{700};
-  constexpr std::size_t kScreenHeight{700};
-  constexpr std::size_t kGridWidth{70};
-  constexpr std::size_t kGridHeight{70};
+  //constexpr std::size_t kScreenWidth{640};
+  //constexpr std::size_t kScreenHeight{480};
+  const int kScreenWidth = 640;
+  const int kScreenHeight = 480;
 
-  Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
+  Renderer renderer(kScreenWidth, kScreenHeight);
   SDL_Renderer* rendererPtr = renderer.getRenderer();
   Media gameMedia(rendererPtr);
   std::vector<Texture*> textures = gameMedia.getTextures();
@@ -23,6 +26,13 @@ int main(int argc, char* args[]) {
 
   //Event handler
   SDL_Event e;
+
+  SDL_Texture* texture = NULL;
+  std::string path = "../textures/testTexture.png";
+  SDL_Surface* surface = IMG_Load(path.c_str());
+  texture = SDL_CreateTextureFromSurface(rendererPtr, surface);
+  SDL_FreeSurface(surface);
+
 
   //While application is running
   while( !quit )
@@ -43,7 +53,7 @@ int main(int argc, char* args[]) {
 
     //renderer.render(textures);
 
-    SDL_RenderCopy(rendererPtr, textures[0]->getTexture(), NULL, NULL);
+    SDL_RenderCopy(rendererPtr, texture, NULL, NULL);
 
     //Update screen
     SDL_RenderPresent(rendererPtr);

@@ -43,7 +43,7 @@ Renderer::Renderer(const std::size_t screen_width,
     SDL_CreateRenderer(
       sdl_window, 
       -1, 
-      SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+      SDL_RENDERER_ACCELERATED);
 
   if (sdl_renderer == NULL) {
     std::cerr << "Renderer could not be created." << std::endl;

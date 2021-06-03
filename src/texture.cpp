@@ -36,7 +36,7 @@ void Texture::loadFromFile(std::string path) {
     
     if (newTexture == NULL) {
         std::cerr << "Unable to create texture from: " << path.c_str() << std::endl;
-        std::cerr << " SDL2_Error: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
     } 
 
     //Get rid of old loaded surface

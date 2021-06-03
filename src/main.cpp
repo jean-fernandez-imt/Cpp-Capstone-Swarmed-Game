@@ -18,8 +18,8 @@ int main(int argc, char* args[]) {
 
   Renderer renderer(kScreenWidth, kScreenHeight);
   SDL_Renderer* rendererPtr = renderer.getRenderer();
-  Media gameMedia(rendererPtr);
-  std::vector<Texture*> textures = gameMedia.getTextures();
+  //Media gameMedia(rendererPtr);
+  //std::vector<Texture*> textures = gameMedia.getTextures();
 
   //Main loop flag
   bool quit = false;

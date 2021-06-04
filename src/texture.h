@@ -28,11 +28,6 @@ class Texture {
 		//Loads image at specified path
 		void loadFromFile(std::string path);
 
-		void render();
-
-		SDL_Texture* getTexture();
-		
-		/*
 		//Renders texture at given point
 		void render(
             int x, 
@@ -41,12 +36,16 @@ class Texture {
             double angle = 0.0, 
             SDL_Point* center = NULL, 
             SDL_RendererFlip flip = SDL_FLIP_NONE);
-		*/
+
+		SDL_Texture* getTexture();
 
 	private:
 		//The actual hardware texture
 		SDL_Texture* _texture;
 		SDL_Renderer* _renderer;
+
+		int _width;
+		int _height;
 };
 
 #endif

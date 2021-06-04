@@ -30,9 +30,6 @@ In this project, you can build your own C++ application or extend this Snake gam
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
-## Why not Cmake?
-Since I ran into many difficulties when trying to link the SDL_Image library with Cmake, I decided to take the time to create Makefiles for building and for debugging purposes. I would really appreciate if somebody could contribute with a working CMakeLists.txt file for Linux distributions.
-
 ## CC Attribution-ShareAlike 4.0 International
 
 

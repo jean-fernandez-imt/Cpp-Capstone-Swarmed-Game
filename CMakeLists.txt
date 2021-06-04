@@ -9,11 +9,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w -std=c++17")
 add_executable(
     ${PROJECT_NAME} 
     src/main.cpp 
-    src/game.cpp 
-    src/keyboard.cpp 
     src/renderer.cpp 
-    src/snake.cpp 
-    src/texture.cpp)
+    src/texture.cpp
+    src/keyboard.cpp
+    src/player.cpp 
+    src/game.cpp 
+    src/snake.cpp)
 
 INCLUDE(FindPkgConfig)
 

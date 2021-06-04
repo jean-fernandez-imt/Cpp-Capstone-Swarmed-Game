@@ -6,6 +6,7 @@
 #include "game.h"
 #include "renderer.h"
 #include "texture.h"
+#include "player.h"
 
 int main(int argc, char* args[]) {
   constexpr std::size_t kScreenWidth{640};
@@ -13,16 +14,22 @@ int main(int argc, char* args[]) {
 
   Renderer renderer(kScreenWidth, kScreenHeight);
   SDL_Renderer* rendererPtr = renderer.getRenderer();
+
   std::vector<Texture*> textures;
 
   // Prepare Texture objects
-  Texture mainPlayer(rendererPtr);
+  Texture mainPlayerTexture(rendererPtr);
 
   //Load SDL_Texture from files
-  mainPlayer.loadFromFile("../textures/testTexture.png");
+  mainPlayerTexture.loadFromFile("../textures/testTexture.png");
 
   //Add Texture pointers to vector
-  textures.push_back(&mainPlayer);
+  textures.push_back(&mainPlayerTexture);
+
+  Player mainPlayer(
+    kScreenWidth, 
+    kScreenHeight, 
+    textures[loadedTextures::main_player]);
 
   //Main loop flag
   bool quit = false;
@@ -42,16 +49,20 @@ int main(int argc, char* args[]) {
       {
         quit = true;
       }
+
+      //Handle input for the player
+      mainPlayer.handleEvent(e);
     }
+
+    //Move the player
+		mainPlayer.move();
 
     //Clear screen
     //SDL_SetRenderDrawColor(rendererPtr, 0xFF, 0xFF, 0xFF, 0xFF );
     SDL_RenderClear(rendererPtr);
 
-    //renderer.render(textures);
-
-    //SDL_RenderCopy(rendererPtr, mainPlayer.getTexture(), NULL, NULL);
-    renderer.render(textures);
+    //Render objects
+	  mainPlayer.render();
 
     //Update screen
     SDL_RenderPresent(rendererPtr);

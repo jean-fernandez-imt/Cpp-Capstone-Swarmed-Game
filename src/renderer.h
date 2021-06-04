@@ -6,7 +6,10 @@
 #include <vector>
 
 #include "texture.h"
-#include "snake.h"
+
+enum loadedTextures {
+	main_player
+};
 
 class Renderer {
   public:
@@ -18,8 +21,6 @@ class Renderer {
 
     SDL_Renderer* getRenderer();
 
-    //void Render(Snake const snake, SDL_Point const &food);
-    void render(std::vector<Texture*> textures);
     void UpdateWindowTitle(int score, int fps);
 
   private:

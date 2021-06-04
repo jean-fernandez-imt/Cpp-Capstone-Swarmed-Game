@@ -38,14 +38,16 @@ class Texture {
             SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 		SDL_Texture* getTexture();
+		std::size_t getWidth();
+		std::size_t getHeight();
 
 	private:
 		//The actual hardware texture
 		SDL_Texture* _texture;
 		SDL_Renderer* _renderer;
 
-		int _width;
-		int _height;
+		std::size_t _width;
+		std::size_t _height;
 };
 
 #endif

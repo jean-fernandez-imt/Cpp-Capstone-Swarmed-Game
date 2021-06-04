@@ -19,7 +19,7 @@ Texture::Texture(const Texture &source) {
 	std::cout << "Texture: Copy constructor called." << std::endl;
 	_texture = source._texture;
 	_renderer = source._renderer;
-	_width = source._height;
+	_width = source._width;
 	_height = source._height;
 }
 
@@ -31,7 +31,7 @@ Texture &Texture::operator=(const Texture &source) {
 	}
 	_texture = source._texture;
 	_renderer = source._renderer;
-	_width = source._height;
+	_width = source._width;
 	_height = source._height;
 }
 
@@ -40,12 +40,12 @@ Texture::Texture(Texture &&source) {
 	std::cout << "Texture: Move constructor called." << std::endl;
 	_texture = source._texture;
 	_renderer = source._renderer;
-	_width = source._height;
+	_width = source._width;
 	_height = source._height;
 	source._texture = NULL;
 	source._renderer = NULL;
-	_width = 0;
-	_height = 0;
+	source._width = 0;
+	source._height = 0;
 }
 
 //Move assignment operator
@@ -56,12 +56,12 @@ Texture &Texture::operator=(Texture &&source) {
 	}
 	_texture = source._texture;
 	_renderer = source._renderer;
-	_width = source._height;
+	_width = source._width;
 	_height = source._height;
 	source._texture = NULL;
 	source._renderer = NULL;
-	_width = 0;
-	_height = 0;
+	source._width = 0;
+	source._height = 0;
 }
 
 void Texture::release() {
@@ -142,4 +142,11 @@ void Texture::render(
 
 SDL_Texture* Texture::getTexture() {
 	return _texture;
+}
+
+std::size_t Texture::getWidth() {
+	return _width;
+}
+std::size_t Texture::getHeight() {
+	return _height;
 }

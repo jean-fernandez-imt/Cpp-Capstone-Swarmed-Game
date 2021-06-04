@@ -11,8 +11,8 @@
 class Renderer {
   public:
     Renderer (
-      const int screen_width, 
-      const int screen_height);
+      const std::size_t screen_width, 
+      const std::size_t screen_height);
       
     ~Renderer();
 

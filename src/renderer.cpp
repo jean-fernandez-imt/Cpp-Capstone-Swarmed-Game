@@ -3,8 +3,9 @@
 
 #include "renderer.h"
 
-Renderer::Renderer(const int screen_width,
-                   const int screen_height)
+Renderer::Renderer(
+  const std::size_t screen_width,
+  const std::size_t screen_height)
     : screen_width(screen_width),
       screen_height(screen_height) {
 

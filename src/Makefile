@@ -2,7 +2,7 @@
 EXEC = Game-debug
 
 #OBJS specifies which files to compile as part of the project
-OBJS = main.o game.o keyboard.o media.o renderer.o snake.o texture.o
+OBJS = main.o game.o keyboard.o renderer.o snake.o texture.o
 
 #CC specifies which compiler we're using
 CC = g++
@@ -19,7 +19,7 @@ ${EXEC}: ${OBJS}
 	${CC} ${COMPILER_FLAGS} ${LINKER_FLAGS} -o ${EXEC} ${OBJS}
 
 #From here we will compile the objects for the executable
-main.o: main.cpp keyboard.h game.h renderer.h media.h texture.h
+main.o: main.cpp keyboard.h game.h renderer.h texture.h
 	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) -c main.cpp
 
 game.o: game.cpp game.h keyboard.h renderer.h snake.h 
@@ -27,9 +27,6 @@ game.o: game.cpp game.h keyboard.h renderer.h snake.h
 
 keyboard.o: keyboard.cpp keyboard.h snake.h 
 	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) -c keyboard.cpp
-
-media.o: media.cpp media.h keyboard.h snake.h 
-	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) -c media.cpp
 
 renderer.o: renderer.cpp renderer.h texture.h snake.h 
 	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) -c renderer.cpp

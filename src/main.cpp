@@ -5,19 +5,24 @@
 #include "keyboard.h"
 #include "game.h"
 #include "renderer.h"
-#include "media.h"
 #include "texture.h"
 
 int main(int argc, char* args[]) {
-  constexpr std::size_t kFramesPerSecond{60};
-  constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
   constexpr std::size_t kScreenWidth{640};
   constexpr std::size_t kScreenHeight{480};
 
   Renderer renderer(kScreenWidth, kScreenHeight);
   SDL_Renderer* rendererPtr = renderer.getRenderer();
-  //Media gameMedia(rendererPtr);
-  //std::vector<Texture*> textures = gameMedia.getTextures();
+  std::vector<Texture*> textures;
+
+  // Prepare Texture objects
+  Texture mainPlayer(rendererPtr);
+
+  //Load SDL_Texture from files
+  mainPlayer.loadFromFile("../textures/testTexture.png");
+
+  //Add Texture pointers to vector
+  textures.push_back(&mainPlayer);
 
   //Main loop flag
   bool quit = false;
@@ -25,8 +30,6 @@ int main(int argc, char* args[]) {
   //Event handler
   SDL_Event e;
 
-  Texture mainPlayer(rendererPtr);
-  mainPlayer.loadFromFile("../textures/testTexture.png");
 
   //While application is running
   while( !quit )
@@ -47,7 +50,8 @@ int main(int argc, char* args[]) {
 
     //renderer.render(textures);
 
-    SDL_RenderCopy(rendererPtr, mainPlayer.getTexture(), NULL, NULL);
+    //SDL_RenderCopy(rendererPtr, mainPlayer.getTexture(), NULL, NULL);
+    renderer.render(textures);
 
     //Update screen
     SDL_RenderPresent(rendererPtr);

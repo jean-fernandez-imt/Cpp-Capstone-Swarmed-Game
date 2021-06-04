@@ -11,7 +11,6 @@ add_executable(
     src/main.cpp 
     src/game.cpp 
     src/keyboard.cpp 
-    src/media.cpp 
     src/renderer.cpp 
     src/snake.cpp 
     src/texture.cpp)

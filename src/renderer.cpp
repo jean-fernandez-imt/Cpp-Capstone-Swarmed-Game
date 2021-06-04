@@ -109,11 +109,9 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
 }
 */
 
-/*
 void Renderer::render(std::vector<Texture*> textures) {
-  textures[0]->render(0, 0);
+  textures[0]->render();
 }
-*/
 
 void Renderer::UpdateWindowTitle(int score, int fps) {
   std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};

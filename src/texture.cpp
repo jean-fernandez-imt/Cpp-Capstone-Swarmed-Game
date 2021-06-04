@@ -12,6 +12,53 @@ Texture::~Texture() {
 	release();
 }
 
+//Copy constructor
+Texture::Texture(const Texture &source) {
+	std::cout << "Texture: Copy constructor called." << std::endl;
+	_texture = source._texture;
+	_renderer = source._renderer;
+}
+
+//Copy assignment operator
+Texture &Texture::operator=(const Texture &source) {
+	std::cout << "Texture: Copy assignment operator used." << std::endl;
+	if (this == &source) {
+		return *this;
+	}
+	_texture = source._texture;
+	_renderer = source._renderer;
+}
+
+//Move constructor
+Texture::Texture(Texture &&source) {
+	std::cout << "Texture: Move constructor called." << std::endl;
+	_texture = source._texture;
+	_renderer = source._renderer;
+	source._texture = NULL;
+	source._renderer = NULL;
+}
+
+//Move assignment operator
+Texture &Texture::operator=(Texture &&source) {
+	std::cout << "Texture: Move assignment operator used." << std::endl;
+	if (this == &source) {
+		return *this;
+	}
+	_texture = source._texture;
+	_renderer = source._renderer;
+	source._texture = NULL;
+	source._renderer = NULL;
+}
+
+void Texture::release() {
+	//Free texture if it exists
+	if (_texture != NULL) {
+		SDL_DestroyTexture(_texture);
+		_texture = NULL;
+        _renderer = NULL;
+	}
+}
+
 void Texture::loadFromFile(std::string path) {
 
 	//The final texture
@@ -40,13 +87,8 @@ void Texture::loadFromFile(std::string path) {
 	_texture = newTexture;
 }
 
-void Texture::release() {
-	//Free texture if it exists
-	if (_texture != NULL) {
-		SDL_DestroyTexture(_texture);
-		_texture = NULL;
-        _renderer = NULL;
-	}
+void Texture::render() {
+	SDL_RenderCopy(_renderer, _texture, NULL, NULL);
 }
 
 SDL_Texture* Texture::getTexture() {

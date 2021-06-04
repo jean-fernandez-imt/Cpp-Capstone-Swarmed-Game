@@ -16,11 +16,19 @@ class Texture {
 		//Deallocates memory
 		~Texture();
 
-		//Loads image at specified path
-		void loadFromFile(std::string path);
-		
+		//Applying Rule of 5
+		Texture(const Texture &source);
+		Texture &operator=(const Texture &source);
+		Texture(Texture &&source);
+		Texture &operator=(Texture &&source);
+
 		//Deallocates texture
 		void release();
+
+		//Loads image at specified path
+		void loadFromFile(std::string path);
+
+		void render();
 
 		SDL_Texture* getTexture();
 		

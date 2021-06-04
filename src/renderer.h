@@ -19,7 +19,7 @@ class Renderer {
     SDL_Renderer* getRenderer();
 
     //void Render(Snake const snake, SDL_Point const &food);
-    //void render(std::vector<Texture*> textures);
+    void render(std::vector<Texture*> textures);
     void UpdateWindowTitle(int score, int fps);
 
   private:

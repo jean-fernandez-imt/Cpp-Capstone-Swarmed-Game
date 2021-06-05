@@ -40,7 +40,8 @@ Renderer::Renderer(
     SDL_CreateRenderer(
       sdl_window, 
       -1, 
-      SDL_RENDERER_ACCELERATED);
+      SDL_RENDERER_ACCELERATED
+      | SDL_RENDERER_PRESENTVSYNC);
 
   if (sdl_renderer == NULL) {
     std::cerr << "Renderer could not be created." << std::endl;

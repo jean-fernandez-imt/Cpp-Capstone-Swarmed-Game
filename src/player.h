@@ -17,7 +17,7 @@ class Player {
 		void handleEvent(SDL_Event& e);
 
 		//Moves the player
-		void move();
+		void move(float timeStep);
 
 		//Shows the player on the screen
 		void render();

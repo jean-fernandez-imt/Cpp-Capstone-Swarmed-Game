@@ -7,6 +7,7 @@
 #include "renderer.h"
 #include "texture.h"
 #include "timer.h"
+#include "aim.h"
 #include "player.h"
 
 int main(int argc, char* args[]) {
@@ -17,10 +18,14 @@ int main(int argc, char* args[]) {
   SDL_Renderer* rendererPtr = renderer.getRenderer();
 
   // Prepare Texture objects
+  Texture markTexture(rendererPtr);
   Texture mainPlayerTexture(rendererPtr);
 
   //Load SDL_Texture from files
+  markTexture.loadFromFile("../textures/testTexture.png");
   mainPlayerTexture.loadFromFile("../textures/testTexture.png");
+
+  Aim mark(std::move(markTexture));
 
   //Create Game elements: Pass pointers to Game object.
   Player mainPlayer(
@@ -38,7 +43,6 @@ int main(int argc, char* args[]) {
   //Event handler
   SDL_Event e;
 
-
   //While application is running
   while( !quit )
   {
@@ -52,6 +56,7 @@ int main(int argc, char* args[]) {
       }
       //Handle input for the player
       mainPlayer.handleEvent(e);
+      mark.handleEvent(e);
     }
 
     //Calculate time step
@@ -68,6 +73,7 @@ int main(int argc, char* args[]) {
 
     //Render objects
 	  mainPlayer.render();
+    mark.render();
 
     //Update screen
     SDL_RenderPresent(rendererPtr);

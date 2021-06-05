@@ -7,10 +7,6 @@
 
 #include "texture.h"
 
-enum loadedTextures {
-	main_player
-};
-
 class Renderer {
   public:
     Renderer (

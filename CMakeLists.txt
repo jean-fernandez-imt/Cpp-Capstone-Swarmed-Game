@@ -13,8 +13,9 @@ add_executable(
     src/renderer.cpp 
     src/texture.cpp
     src/keyboard.cpp
-    src/timer.cpp
+    src/aim.cpp
     src/player.cpp 
+    src/timer.cpp
     src/game.cpp 
     src/snake.cpp)
 

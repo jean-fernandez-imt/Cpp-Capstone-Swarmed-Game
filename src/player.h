@@ -11,7 +11,7 @@ class Player {
 		Player(
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
-            Texture* texture);
+            Texture texture);
 
 		//Takes key presses and adjusts the player's velocity
 		void handleEvent(SDL_Event& e);
@@ -28,7 +28,7 @@ class Player {
 		const std::size_t _screenHeight;
 
         //Designated texture
-        Texture* _texture;
+        Texture _texture;
 
         //The dimensions of the dot
 		const std::size_t _width;

@@ -16,22 +16,17 @@ int main(int argc, char* args[]) {
   Renderer renderer(kScreenWidth, kScreenHeight);
   SDL_Renderer* rendererPtr = renderer.getRenderer();
 
-  std::vector<Texture*> textures;
-
   // Prepare Texture objects
   Texture mainPlayerTexture(rendererPtr);
 
   //Load SDL_Texture from files
   mainPlayerTexture.loadFromFile("../textures/testTexture.png");
 
-  //Add Texture pointers to vector
-  textures.push_back(&mainPlayerTexture);
-
   //Create Game elements: Pass pointers to Game object.
   Player mainPlayer(
     kScreenWidth, 
-    kScreenHeight, 
-    textures[loadedTextures::main_player]);
+    kScreenHeight,
+    std::move(mainPlayerTexture)); 
 
   //Create Timer instance for frame independent movement control
   //This is better to create also in the Game object...

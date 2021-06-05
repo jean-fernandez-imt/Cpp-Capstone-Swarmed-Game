@@ -96,9 +96,9 @@ void Texture::loadFromFile(std::string path) {
 		SDL_TRUE, 
 		SDL_MapRGB(
 			loadedSurface->format, 
-			0, 
+			0x8C, 
 			0xFF, 
-			0xFF));
+			0xFB));
 
     //Create texture from surface pixels
     newTexture = SDL_CreateTextureFromSurface(_renderer, loadedSurface);

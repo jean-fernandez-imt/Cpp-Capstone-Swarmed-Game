@@ -49,7 +49,7 @@ Renderer::Renderer(
   }
 
   //Initialize renderer color
-	SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0x1E);
 
   //Initialize PNG loading
   int imgFlags = IMG_INIT_PNG;

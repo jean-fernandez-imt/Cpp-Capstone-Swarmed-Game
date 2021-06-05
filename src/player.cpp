@@ -3,10 +3,10 @@
 Player::Player(
     const std::size_t screenWidth, 
     const std::size_t screenHeight,
-    Texture* texture)
+    Texture texture)
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
-      _texture(texture),
+      _texture(std::move(texture)),
       _width(100),
       _height(100),
       _vel(320),
@@ -61,5 +61,5 @@ void Player::move(float timeStep) {
 
 void Player::render() {
     //Show the player
-	_texture->render(_posX, _posY);
+	_texture.render(_posX, _posY);
 }

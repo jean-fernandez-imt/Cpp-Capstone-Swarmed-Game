@@ -19,19 +19,19 @@ int main(int argc, char* args[]) {
 
   // Prepare Texture objects
   Texture markTexture(rendererPtr);
-  Texture mainPlayerTexture(rendererPtr);
+  Texture spaceshipTexture(rendererPtr);
 
   //Load SDL_Texture from files
   markTexture.loadFromFile("../textures/aim.png");
-  mainPlayerTexture.loadFromFile("../textures/testTexture.png");
+  spaceshipTexture.loadFromFile("../textures/Spaceship.png");
 
   Aim mark(std::move(markTexture));
 
   //Create Game elements: Pass pointers to Game object.
-  Player mainPlayer(
+  Player spaceship(
     kScreenWidth, 
     kScreenHeight,
-    std::move(mainPlayerTexture)); 
+    std::move(spaceshipTexture)); 
 
   //Create Timer instance for frame independent movement control
   //This is better to create also in the Game object...
@@ -55,15 +55,18 @@ int main(int argc, char* args[]) {
         quit = true;
       }
       //Handle input for the player
-      mainPlayer.handleEvent(e);
+      spaceship.handleEvent(e);
       mark.handleEvent(e);
     }
 
     //Calculate time step
     float timeStep = stepTimer.getTicks() / static_cast<float>(1000);
 
+    //Rotate the player
+    spaceship.updateAngle(mark.getPosition());
+
     //Move the player
-		mainPlayer.move(timeStep);
+		spaceship.move(timeStep);
 
     //Restart step timer
 		stepTimer.start();
@@ -72,7 +75,7 @@ int main(int argc, char* args[]) {
     SDL_RenderClear(rendererPtr);
 
     //Render objects
-	  mainPlayer.render();
+	  spaceship.render();
     mark.render();
 
     //Update screen

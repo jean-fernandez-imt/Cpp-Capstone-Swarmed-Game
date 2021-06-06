@@ -16,6 +16,9 @@ class Player {
 		//Takes key presses and adjusts the player's velocity
 		void handleEvent(SDL_Event& e);
 
+		//Rotates the player
+		void updateAngle(SDL_Point aimPos);
+
 		//Moves the player
 		void move(float timeStep);
 
@@ -30,18 +33,21 @@ class Player {
         //Designated texture
         Texture _texture;
 
-        //The dimensions of the dot
+        //The dimensions of the player
 		const std::size_t _width;
 		const std::size_t _height;
 
-		//Maximum axis velocity of the dot
+		//Maximum axis velocity of the player
 		const std::size_t _vel;
 		
-        //The X and Y offsets of the dot
+        //The X and Y offsets of the player
 		int _posX; 
         int _posY;
 
-		//The velocity of the dot
+		//The angle of the player respect aim
+		double _angle;
+
+		//The velocity of the player
 		int _velX;
         int _velY;
 };

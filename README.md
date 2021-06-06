@@ -32,6 +32,7 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 ## Special Thanks
 * OpenGameArt.org: oglsdl - Aim texture.
+* OpenGameArt.org: Tummyache - Spaceship texture.
 
 ## CC Attribution-ShareAlike 4.0 International
 

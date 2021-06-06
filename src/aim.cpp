@@ -35,6 +35,10 @@ void Aim::handleEvent(SDL_Event& e) {
         }
 	}
 }
+
+SDL_Point Aim::getPosition() {
+    return _position;
+}
 	
 void Aim::render() {
 	_texture.render(

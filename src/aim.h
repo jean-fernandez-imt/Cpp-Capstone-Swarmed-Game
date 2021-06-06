@@ -15,6 +15,8 @@ class Aim {
 
 		//Handles mouse event
 		void handleEvent(SDL_Event& e);
+
+		SDL_Point getPosition();
 	
 		//Shows button sprite
 		void render();

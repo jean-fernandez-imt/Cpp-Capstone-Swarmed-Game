@@ -9,8 +9,8 @@ Player::Player(
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
       _texture(std::move(texture)),
-      _width(100),
-      _height(100),
+      _width(80),
+      _height(80),
       _vel(320),
       _posX(_screenWidth/2),
       _posY(_screenHeight/2),
@@ -80,6 +80,6 @@ void Player::move(float timeStep) {
 }
 
 void Player::render() {
-    //Show the player (with some texture adjust)
-	_texture.render(_posX + 10 - _width/2, _posY +10 - _height/2, NULL, _angle);
+    //Show the player
+	_texture.render(_posX - _width/2, _posY - _height/2, NULL, _angle);
 } 

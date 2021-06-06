@@ -4,31 +4,28 @@
 #include <SDL2/SDL.h>
 #include <random>
 
-#include "keyboard.h"
 #include "renderer.h"
-#include "snake.h"
+#include "aim.h"
+#include "player.h"
+#include "timer.h"
 
 class Game {
- public:
-  Game(std::size_t grid_width, std::size_t grid_height);
-  void Run(Keyboard const &controller, Renderer &renderer,
-           std::size_t target_frame_duration);
-  int GetScore() const;
-  int GetSize() const;
+  public:
+    Game(SDL_Renderer* renderer, Aim* mark, Player* spaceship);
+    void run();
+    int getScore();
 
- private:
-  Snake snake;
-  SDL_Point food;
+  private:
+    SDL_Renderer* _renderer;
+    Aim* _mark;
+    Player* _spaceship;
 
-  std::random_device dev;
-  std::mt19937 engine;
-  std::uniform_int_distribution<int> random_w;
-  std::uniform_int_distribution<int> random_h;
+    int _score{0};
 
-  int score{0};
-
-  void PlaceFood();
-  void Update();
+    //Main Game Loop
+    void input(SDL_Event* e, bool* running);
+    void update(Timer* stepTimer);
+    void render();
 };
 
 #endif

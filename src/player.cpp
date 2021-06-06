@@ -10,8 +10,8 @@ Player::Player(
       _width(100),
       _height(100),
       _vel(320),
-      _posX(0),
-      _posY(0),
+      _posX(_screenWidth/2 - _width/2),
+      _posY(_screenHeight/2 - _height/2),
       _velX(0),
       _velY(0) {}
 

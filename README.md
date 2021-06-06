@@ -30,8 +30,10 @@ In this project, you can build your own C++ application or extend this Snake gam
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
-## CC Attribution-ShareAlike 4.0 International
+## Special Thanks
+* OpenGameArt.org: oglsdl - Aim texture.
 
+## CC Attribution-ShareAlike 4.0 International
 
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 

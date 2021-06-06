@@ -39,5 +39,5 @@ void Aim::handleEvent(SDL_Event& e) {
 void Aim::render() {
 	_texture.render(
         _position.x - (_texture.getWidth()/2), 
-        _position.y- (_texture.getHeight()/2));
+        _position.y - (_texture.getHeight()/2));
 }

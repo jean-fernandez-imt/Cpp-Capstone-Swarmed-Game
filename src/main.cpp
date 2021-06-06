@@ -22,7 +22,7 @@ int main(int argc, char* args[]) {
   Texture mainPlayerTexture(rendererPtr);
 
   //Load SDL_Texture from files
-  markTexture.loadFromFile("../textures/testTexture.png");
+  markTexture.loadFromFile("../textures/aim.png");
   mainPlayerTexture.loadFromFile("../textures/testTexture.png");
 
   Aim mark(std::move(markTexture));

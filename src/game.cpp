@@ -2,10 +2,15 @@
 
 #include "game.h"
 
-Game::Game(SDL_Renderer* renderer, Aim* mark, Player* spaceship)
+Game::Game(
+  SDL_Renderer* renderer, 
+  Aim* mark, 
+  Player* spaceship,
+  Bullet* bullet)
     : _renderer(renderer),
       _mark(mark),
-      _spaceship(spaceship) {}
+      _spaceship(spaceship),
+      _bullet(bullet) {}
 
 void Game::run() {
   Timer stepTimer;
@@ -31,6 +36,7 @@ void Game::input(SDL_Event* e, bool* running) {
     //Handle inputs
     _spaceship->handleEvent(*e);
     _mark->handleEvent(*e);
+    _bullet->handleEvent(*e);
   }
 }
 
@@ -43,6 +49,9 @@ void Game::update(Timer* stepTimer) {
 
   //Move the player
   _spaceship->move(timeStep);
+
+  //Bullet fire
+  _bullet->fire();
 
   //Restart step timer
   stepTimer->start();

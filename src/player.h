@@ -25,6 +25,10 @@ class Player {
 		//Shows the player on the screen
 		void render();
 
+		//Get the position of the player
+		int getPosX();
+		int getPosY();
+
     private:
         //Screen size references
         const std::size_t _screenWidth;

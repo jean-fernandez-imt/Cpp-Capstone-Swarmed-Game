@@ -83,3 +83,11 @@ void Player::render() {
     //Show the player
 	_texture.render(_posX - _width/2, _posY - _height/2, NULL, _angle);
 } 
+
+int Player::getPosX() {
+    return _posX;
+}
+
+int Player::getPosY() {
+    return _posY;
+}

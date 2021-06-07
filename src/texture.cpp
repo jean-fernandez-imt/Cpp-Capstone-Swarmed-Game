@@ -83,6 +83,11 @@ void Texture::loadFromFile(std::string path) {
 	SDL_Texture* newTexture = NULL;
 
 	//Load image at specified path
+	SDL_LogMessage(
+		SDL_LOG_CATEGORY_APPLICATION, 
+		SDL_LOG_PRIORITY_INFO, 
+		"Loading: %s", 
+		path.c_str());
 	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
 
 	if (loadedSurface == NULL) {

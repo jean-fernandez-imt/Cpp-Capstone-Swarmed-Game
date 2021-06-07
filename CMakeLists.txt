@@ -12,12 +12,11 @@ add_executable(
     src/main.cpp 
     src/renderer.cpp 
     src/texture.cpp
-    src/keyboard.cpp
     src/aim.cpp
-    src/player.cpp 
+    src/player.cpp
+    src/bullet.cpp 
     src/timer.cpp
-    src/game.cpp 
-    src/snake.cpp)
+    src/game.cpp)
 
 INCLUDE(FindPkgConfig)
 

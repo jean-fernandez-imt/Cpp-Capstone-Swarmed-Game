@@ -21,18 +21,6 @@ void Aim::handleEvent(SDL_Event& e) {
 
         //Update mouse position
         updatePosition(x, y);
-
-        //Choose actions on mouse event
-        switch(e.type){
-            case SDL_MOUSEMOTION:
-            break;
-        
-            case SDL_MOUSEBUTTONDOWN:
-            break;
-            
-            case SDL_MOUSEBUTTONUP:
-            break;
-        }
 	}
 }
 

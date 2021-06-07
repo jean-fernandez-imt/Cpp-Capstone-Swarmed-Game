@@ -14,10 +14,12 @@ int main(int argc, char* args[]) {
   // Prepare Texture objects
   Texture markTexture(rendererPtr);
   Texture spaceshipTexture(rendererPtr);
+  Texture bulletTexture(rendererPtr);
 
   //Load SDL_Texture from files
   markTexture.loadFromFile("../textures/aim.png");
-  spaceshipTexture.loadFromFile("../textures/Spaceship.png");
+  spaceshipTexture.loadFromFile("../textures/spaceship.png");
+  bulletTexture.loadFromFile("../textures/playerBullet.png");
 
   Aim mark(std::move(markTexture));
 
@@ -27,7 +29,16 @@ int main(int argc, char* args[]) {
     kScreenHeight,
     std::move(spaceshipTexture));
 
-  Game untitled(rendererPtr, &mark, &spaceship);
+  Bullet bullet(
+    kScreenWidth, 
+    kScreenHeight,
+    std::move(bulletTexture));
+
+  Game untitled(
+    rendererPtr, 
+    &mark, 
+    &spaceship,
+    &bullet);
   untitled.run();
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << untitled.getScore() << "\n";

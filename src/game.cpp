@@ -47,6 +47,9 @@ void Game::update(Timer* stepTimer) {
   //Move the player
   _spaceship->move(timeStep);
 
+  //Rotate the player
+  _spaceship->updateAngle(_mark->getPosition());
+
   //Bullet fire
   _bullet->fire();
 

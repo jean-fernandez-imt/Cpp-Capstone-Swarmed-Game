@@ -17,7 +17,7 @@ class Player {
 		void handleEvent(SDL_Event& e);
 		
 		//Rotates the player
-		void updateAngle(int x, int y);
+		void updateAngle(SDL_Point aimPos);
 
 		//Moves the player
 		void move(float timeStep);
@@ -29,6 +29,9 @@ class Player {
 		//Get the position of the player
 		int getPosX();
 		int getPosY();
+
+		//Get the angle of the player
+		double getAngle();
 
     private:
         //Screen size references

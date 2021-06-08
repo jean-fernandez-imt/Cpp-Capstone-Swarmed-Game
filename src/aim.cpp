@@ -25,3 +25,7 @@ void Aim::render() {
         _position.x - (_texture.getWidth()/2), 
         _position.y - (_texture.getHeight()/2));
 }
+
+SDL_Point Aim::getPosition() {
+	return _position;
+}

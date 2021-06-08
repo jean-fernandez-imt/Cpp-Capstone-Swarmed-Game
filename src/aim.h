@@ -16,6 +16,8 @@ class Aim {
 		//Shows button sprite
 		void render();
 
+		SDL_Point getPosition();
+
 	private:
 		//Top left position
 		SDL_Point _position;

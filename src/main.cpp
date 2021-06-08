@@ -32,11 +32,12 @@ int main(int argc, char* args[]) {
   Bullet bullet(
     kScreenWidth, 
     kScreenHeight,
-    std::move(bulletTexture));
+    std::move(bulletTexture),
+    &spaceship);
 
   Game untitled(
     rendererPtr, 
-    &mark, 
+    &mark,
     &spaceship,
     &bullet);
   untitled.run();

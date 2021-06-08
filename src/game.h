@@ -6,7 +6,6 @@
 
 #include "renderer.h"
 #include "aim.h"
-#include "player.h"
 #include "bullet.h"
 #include "timer.h"
 

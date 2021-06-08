@@ -15,12 +15,13 @@ class Player {
 
 		//Takes key presses and adjusts the player's velocity
 		void handleEvent(SDL_Event& e);
-
+		
 		//Rotates the player
-		void updateAngle(SDL_Point aimPos);
+		void updateAngle(int x, int y);
 
 		//Moves the player
 		void move(float timeStep);
+
 
 		//Shows the player on the screen
 		void render();

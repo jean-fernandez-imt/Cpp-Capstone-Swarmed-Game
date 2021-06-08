@@ -24,10 +24,7 @@ void Bullet::handleEvent(SDL_Event& e) {
 		SDL_GetMouseState(&x, &y);
 
         //Choose actions on mouse event
-        switch(e.type){
-            case SDL_MOUSEMOTION:
-            break;
-        
+        switch(e.type){    
             case SDL_MOUSEBUTTONDOWN:
             _fired = true;
             break;
@@ -55,7 +52,7 @@ void Bullet::fire() {
 }
 
 void Bullet::render() {
-    //if (_health == 1) {
+    if (_health == 1) {
         _texture.render(_x, _y);
-    //}
+    }
 } 

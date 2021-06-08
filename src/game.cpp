@@ -44,9 +44,6 @@ void Game::update(Timer* stepTimer) {
   //Calculate time step
   float timeStep = stepTimer->getTicks() / static_cast<float>(1000);
 
-  //Rotate the player
-  _spaceship->updateAngle(_mark->getPosition());
-
   //Move the player
   _spaceship->move(timeStep);
 
@@ -64,6 +61,7 @@ void Game::render() {
   //Render objects
   _spaceship->render();
   _mark->render();
+  _bullet->render();
 
   //Update screen
   SDL_RenderPresent(_renderer);

@@ -10,13 +10,8 @@ class Aim {
 		//Initializes internal variables
 		Aim(Texture texture);
 
-		//Sets top left position
-		void updatePosition(int x, int y);
-
 		//Handles mouse event
 		void handleEvent(SDL_Event& e);
-
-		SDL_Point getPosition();
 	
 		//Shows button sprite
 		void render();

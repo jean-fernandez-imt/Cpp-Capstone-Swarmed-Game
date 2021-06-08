@@ -5,29 +5,21 @@ Aim::Aim(Texture texture): _texture(std::move(texture)) {
 	_position.y = 0;
 }
 
-void Aim::updatePosition(int x, int y) {
-	_position.x = x;
-	_position.y = y;
-}
-
 void Aim::handleEvent(SDL_Event& e) {
 	//If mouse event happened
 	if(e.type == SDL_MOUSEMOTION 
-        || e.type == SDL_MOUSEBUTTONDOWN 
-        || e.type == SDL_MOUSEBUTTONUP) {
+		|| e.type == SDL_MOUSEBUTTONDOWN 
+		|| e.type == SDL_MOUSEBUTTONUP) {
 		//Get mouse position
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 
-        //Update mouse position
-        updatePosition(x, y);
+		//Update mouse position
+		_position.x = x;
+		_position.y = y;
 	}
 }
 
-SDL_Point Aim::getPosition() {
-    return _position;
-}
-	
 void Aim::render() {
 	_texture.render(
         _position.x - (_texture.getWidth()/2), 

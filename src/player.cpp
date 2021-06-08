@@ -36,19 +36,31 @@ void Player::handleEvent(SDL_Event& e) {
             case SDLK_d: _velX -= _vel; break;
         }
     }
+
+    //If mouse event happened
+	if(e.type == SDL_MOUSEMOTION 
+		|| e.type == SDL_MOUSEBUTTONDOWN 
+		|| e.type == SDL_MOUSEBUTTONUP) {
+		//Get mouse position
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+
+		//Rotate Player
+		updateAngle(x, y);
+	}
 }
 
-void Player::updateAngle(SDL_Point aimPos) {
+void Player::updateAngle(int x, int y) {
     //Avoid division by 0
-    if (aimPos.x == _posX) {
-        if (aimPos.y >= _posY) {
+    if (x == _posX) {
+        if (y >= _posY) {
             _angle = 180;
-        } else if (aimPos.y < _posY) {
+        } else if (y < _posY) {
             _angle = 0;
         }
     } else {
         _angle = 
-            (atan2((aimPos.y - _posY), (aimPos.x - _posX))
+            (atan2((y - _posY), (x - _posX))
             *180
             /M_PI)
             + 90;

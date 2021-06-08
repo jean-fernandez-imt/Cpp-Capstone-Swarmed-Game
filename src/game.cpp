@@ -6,11 +6,11 @@ Game::Game(
   SDL_Renderer* renderer, 
   Aim* mark, 
   Player* spaceship,
-  Bullet* bullet)
+  Gun* spaceshipGun)
     : _renderer(renderer),
       _mark(mark),
       _spaceship(spaceship),
-      _bullet(bullet) {}
+      _spaceshipGun(spaceshipGun) {}
 
 void Game::run() {
   Timer stepTimer;
@@ -34,9 +34,9 @@ void Game::input(SDL_Event* e, bool* running) {
       *running = false;
     }
     //Handle inputs
-    _spaceship->handleEvent(*e);
     _mark->handleEvent(*e);
-    _bullet->handleEvent(*e);
+    _spaceship->handleEvent(*e);
+    _spaceshipGun->handleEvent(*e);
   }
 }
 
@@ -50,8 +50,8 @@ void Game::update(Timer* stepTimer) {
   //Rotate the player
   _spaceship->updateAngle(_mark->getPosition());
 
-  //Bullet fire
-  _bullet->fire();
+  //Update the Gun's position and state
+  _spaceshipGun->updateGun();
 
   //Restart step timer
   stepTimer->start();
@@ -62,9 +62,9 @@ void Game::render() {
   SDL_RenderClear(_renderer);
 
   //Render objects
-  _spaceship->render();
   _mark->render();
-  _bullet->render();
+  _spaceship->render();
+  _spaceshipGun->render();
 
   //Update screen
   SDL_RenderPresent(_renderer);

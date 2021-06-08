@@ -22,7 +22,6 @@ class Player {
 		//Moves the player
 		void move(float timeStep);
 
-
 		//Shows the player on the screen
 		void render();
 

@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include "texture.h"
 
-//The mouse button
+//The marksman
 class Aim {
 	public:
 		//Initializes internal variables

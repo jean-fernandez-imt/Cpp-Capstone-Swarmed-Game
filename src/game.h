@@ -6,7 +6,7 @@
 
 #include "renderer.h"
 #include "aim.h"
-#include "bullet.h"
+#include "gun.h"
 #include "timer.h"
 
 class Game {
@@ -15,7 +15,8 @@ class Game {
       SDL_Renderer* renderer, 
       Aim* mark, 
       Player* spaceship,
-      Bullet* bullet);
+      Gun* spaceshipGun);
+      
     void run();
     int getScore();
 
@@ -23,7 +24,7 @@ class Game {
     SDL_Renderer* _renderer;
     Aim* _mark;
     Player* _spaceship;
-    Bullet* _bullet;
+    Gun* _spaceshipGun;
 
     int _score{0};
 

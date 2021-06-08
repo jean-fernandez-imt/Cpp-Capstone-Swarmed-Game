@@ -22,9 +22,6 @@ class Texture {
 		Texture(Texture &&source);
 		Texture &operator=(Texture &&source);
 
-		//Deallocates texture
-		void release();
-
 		//Loads image at specified path
 		void loadFromFile(std::string path);
 
@@ -48,6 +45,9 @@ class Texture {
 
 		std::size_t _width;
 		std::size_t _height;
+
+		//Deallocates texture
+		void release();
 };
 
 #endif

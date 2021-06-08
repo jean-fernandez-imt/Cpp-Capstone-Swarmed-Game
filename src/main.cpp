@@ -29,18 +29,22 @@ int main(int argc, char* args[]) {
     kScreenHeight,
     std::move(spaceshipTexture));
 
-  Bullet bullet(
+  
+  Gun spaceshipGun(
     kScreenWidth, 
     kScreenHeight,
     std::move(bulletTexture),
     &spaceship);
-
+  
+  
   Game untitled(
     rendererPtr, 
     &mark,
     &spaceship,
-    &bullet);
+    &spaceshipGun);
   untitled.run();
+  
+
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << untitled.getScore() << "\n";
 

@@ -3,7 +3,7 @@
 #include "enemy.h"
 
 Enemy::Enemy(
-    const SpawningPos spawningPos,
+    SpawningPos spawningPos,
 	Player* target,
     Texture* texture)
     : _spawningPos(spawningPos),
@@ -51,7 +51,7 @@ void Enemy::move(float timeStep) {
 }
 
 void Enemy::render() {
-    //Show the enemy if it is stll alive
+    //Show the enemy if it is still alive
     if (_health >= 1) {
     	_texture->render(_posX - _width/2, _posY - _height/2, NULL, _direction);
     }

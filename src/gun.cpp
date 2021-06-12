@@ -32,7 +32,9 @@ void Gun::handleEvent(SDL_Event& e) {
                     _y,
                     _dx,
                     _dy,
-                    _speed));
+                    _speed
+                )
+            );
             break;
             
             case SDL_MOUSEBUTTONUP:

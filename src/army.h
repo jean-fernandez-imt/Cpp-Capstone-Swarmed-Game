@@ -6,6 +6,7 @@
 
 #include "texture.h"
 #include "player.h"
+#include "enemy.h"
 #include "timer.h"
 
 struct SpawningPos {
@@ -26,7 +27,7 @@ class Army {
         void spawn();
 
         //Check if the enemy is still alive
-        void updateEnemies();
+        void updateEnemies(float timeStep);
 
         //Rendering the enemies
         void render();
@@ -47,7 +48,7 @@ class Army {
 		std::deque<SpawningPos> _spawnPoints;
 
         //Existing enemies
-        //std::deque<Enemy> _enemies;
+        std::deque<Enemy> _enemies;
 };
 
 #endif

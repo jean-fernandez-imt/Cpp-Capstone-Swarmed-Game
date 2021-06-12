@@ -11,7 +11,7 @@ class Enemy {
     public:
 		//Initializes the variables
 		Enemy(
-			const SpawningPos spawningPos,
+			SpawningPos spawningPos,
 			Player* target,
             Texture* texture);
 		
@@ -55,7 +55,7 @@ class Enemy {
 		//The enemy should face the target
 		double _direction;
 
-		//The velocity of the player
+		//The velocity of the enemy
 		int _velX;
         int _velY;
 };

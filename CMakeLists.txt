@@ -15,6 +15,7 @@ add_executable(
     src/aim.cpp
     src/player.cpp
     src/gun.cpp
+    src/army.cpp
     src/bullet.cpp 
     src/timer.cpp
     src/game.cpp)

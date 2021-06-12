@@ -2,6 +2,12 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
+#include "renderer.h"
+#include "texture.h"
+#include "aim.h"
+#include "player.h"
+#include "gun.h"
+#include "army.h"
 #include "game.h"
 
 int main(int argc, char* args[]) {
@@ -37,15 +43,22 @@ int main(int argc, char* args[]) {
     kScreenHeight,
     std::move(bulletTexture),
     &spaceship);
+
+  Army enemyArmy(
+    kScreenWidth, 
+    kScreenHeight,
+    &spaceship,
+    std::move(spaceshipTexture));
   
   
   Game untitled(
     rendererPtr, 
     &mark,
     &spaceship,
-    &spaceshipGun);
+    &spaceshipGun,
+    &enemyArmy);
+    
   untitled.run();
-  
 
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << untitled.getScore() << "\n";

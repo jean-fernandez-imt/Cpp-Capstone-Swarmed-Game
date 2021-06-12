@@ -6,11 +6,13 @@ Game::Game(
   SDL_Renderer* renderer, 
   Aim* mark, 
   Player* spaceship,
-  Gun* spaceshipGun)
+  Gun* spaceshipGun,
+  Army* enemyArmy)
     : _renderer(renderer),
       _mark(mark),
       _spaceship(spaceship),
-      _spaceshipGun(spaceshipGun) {}
+      _spaceshipGun(spaceshipGun),
+      _enemyArmy(enemyArmy) {}
 
 void Game::run() {
   Timer stepTimer;
@@ -37,6 +39,7 @@ void Game::input(SDL_Event* e, bool* running) {
     _mark->handleEvent(*e);
     _spaceship->handleEvent(*e);
     _spaceshipGun->handleEvent(*e);
+    _enemyArmy->spawn();
   }
 }
 

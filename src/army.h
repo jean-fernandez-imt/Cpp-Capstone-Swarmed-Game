@@ -44,7 +44,7 @@ class Army {
 
 		//Spawning control
 		Timer _spawnTimer;
-		std::deque<SpawningPos> _startPoints;
+		std::deque<SpawningPos> _spawnPoints;
 
         //Existing enemies
         //std::deque<Enemy> _enemies;

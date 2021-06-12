@@ -3,16 +3,12 @@
 
 #include <SDL2/SDL.h>
 #include <deque>
+#include <tuple>
 
 #include "texture.h"
 #include "player.h"
 #include "enemy.h"
 #include "timer.h"
-
-struct SpawningPos {
-	int x;
-	int y;
-};
 
 class Army {
     public:
@@ -45,7 +41,7 @@ class Army {
 
 		//Spawning control
 		Timer _spawnTimer;
-		std::deque<SpawningPos> _spawnPoints;
+		std::deque<std::tuple<int, int>> _spawnPoints;
 
         //Existing enemies
         std::deque<Enemy> _enemies;

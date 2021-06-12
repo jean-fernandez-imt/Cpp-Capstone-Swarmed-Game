@@ -36,7 +36,6 @@ int main(int argc, char* args[]) {
     kScreenWidth, 
     kScreenHeight,
     std::move(spaceshipTexture));
-
   
   Gun spaceshipGun(
     kScreenWidth, 
@@ -50,14 +49,13 @@ int main(int argc, char* args[]) {
     &spaceship,
     std::move(spaceshipTexture));
   
-  
   Game untitled(
     rendererPtr, 
     &mark,
     &spaceship,
     &spaceshipGun,
     &enemyArmy);
-    
+
   untitled.run();
 
   std::cout << "Game has terminated successfully!\n";

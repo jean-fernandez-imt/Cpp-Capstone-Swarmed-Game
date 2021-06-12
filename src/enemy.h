@@ -2,16 +2,16 @@
 #define ENEMY_H
 
 #include <SDL2/SDL.h>
+#include <tuple>
 
 #include "texture.h"
 #include "player.h"
-#include "army.h"
 
 class Enemy {
     public:
 		//Initializes the variables
 		Enemy(
-			SpawningPos spawningPos,
+			std::tuple<int, int> spawningPos,
 			Player* target,
             Texture* texture);
 		
@@ -29,9 +29,6 @@ class Enemy {
 		int getHealth();
 
     private:
-		//Spawning position
-		const SpawningPos _spawningPos;
-
 		//Target player
 		Player* _target;
 

@@ -56,6 +56,9 @@ void Game::update(Timer* stepTimer) {
   //Update the Gun's position and state
   _spaceshipGun->updateGun();
 
+  //Update the enemy Army
+  _enemyArmy->updateEnemies(timeStep);
+
   //Restart step timer
   stepTimer->start();
 }
@@ -68,6 +71,7 @@ void Game::render() {
   _mark->render();
   _spaceship->render();
   _spaceshipGun->render();
+  _enemyArmy->render();
 
   //Update screen
   SDL_RenderPresent(_renderer);

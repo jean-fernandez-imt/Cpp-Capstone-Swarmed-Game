@@ -3,18 +3,17 @@
 #include "enemy.h"
 
 Enemy::Enemy(
-    SpawningPos spawningPos,
+    std::tuple<int, int> spawningPos,
 	Player* target,
     Texture* texture)
-    : _spawningPos(spawningPos),
-      _target(target),
+    : _target(target),
       _texture(texture),
       _health(1),
       _width(50),
       _height(50),
       _vel(240),
-      _posX(_spawningPos.x),
-      _posY(_spawningPos.y),
+      _posX(std::get<0>(spawningPos)),
+      _posY(std::get<1>(spawningPos)),
       _direction(0),
       _velX(0),
       _velY(0) {}

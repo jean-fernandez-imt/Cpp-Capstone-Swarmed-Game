@@ -13,18 +13,14 @@ Army::Army(
       _target(target),
       _texture(std::move(texture)) {
           //Spawn enemies from 4 different positions
-          SpawningPos pos1;
-          SpawningPos pos2;
-          SpawningPos pos3;
-          SpawningPos pos4;
-          pos1.x = -50;
-          pos1.y = _screenHeight/2;
-          pos2.x = _screenWidth/2;
-          pos2.y = -50;
-          pos3.x = _screenWidth + 50;
-          pos3.y = _screenHeight/2;
-          pos4.x = _screenWidth/2;
-          pos4.y = _screenHeight + 50;
+          std::tuple<int, int> pos1;
+          std::tuple<int, int> pos2;
+          std::tuple<int, int> pos3;
+          std::tuple<int, int> pos4;
+          pos1 = std::make_tuple(-50, _screenHeight/2);
+          pos2 = std::make_tuple(_screenWidth/2, -50);
+          pos3 = std::make_tuple(_screenWidth + 50, _screenHeight/2);
+          pos4 = std::make_tuple(_screenWidth/2, _screenHeight + 50);
           _spawnPoints.push_back(pos1);
           _spawnPoints.push_back(pos2);
           _spawnPoints.push_back(pos3);

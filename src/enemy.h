@@ -1,17 +1,17 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
 #include <SDL2/SDL.h>
 
 #include "texture.h"
 
-class Player {
+class Enemy {
     public:
 		//Initializes the variables
-		Player(
+		Enemy(
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
-            Texture texture);
+            Texture* texture);
 
 		//Takes key presses and adjusts the player's velocity
 		void handleEvent(SDL_Event& e);
@@ -24,13 +24,6 @@ class Player {
 
 		//Shows the player on the screen
 		void render();
-
-		//Get the position of the player
-		int getPosX();
-		int getPosY();
-
-		//Get the angle of the player
-		double getAngle();
 
     private:
         //Screen size references

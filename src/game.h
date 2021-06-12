@@ -6,6 +6,7 @@
 
 #include "renderer.h"
 #include "aim.h"
+#include "player.h"
 #include "gun.h"
 #include "timer.h"
 

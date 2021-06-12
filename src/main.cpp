@@ -15,11 +15,13 @@ int main(int argc, char* args[]) {
   Texture markTexture(rendererPtr);
   Texture spaceshipTexture(rendererPtr);
   Texture bulletTexture(rendererPtr);
+  Texture enemyArmyTexture(rendererPtr);
 
   //Load SDL_Texture from files
   markTexture.loadFromFile("../textures/aim.png");
   spaceshipTexture.loadFromFile("../textures/spaceship.png");
   bulletTexture.loadFromFile("../textures/playerBullet.png");
+  enemyArmyTexture.loadFromFile("../textures/enemy.png");
 
   Aim mark(std::move(markTexture));
 

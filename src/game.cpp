@@ -57,7 +57,8 @@ void Game::update(Timer* stepTimer) {
   _spaceshipGun->updateGun();
 
   //Update the enemy Army
-  _enemyArmy->updateEnemies(timeStep);
+  _enemyArmy->move(timeStep);
+  _enemyArmy->updateEnemies();
 
   //Restart step timer
   stepTimer->start();

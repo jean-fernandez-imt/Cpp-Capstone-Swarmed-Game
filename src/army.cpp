@@ -17,10 +17,10 @@ Army::Army(
           std::tuple<int, int> pos2;
           std::tuple<int, int> pos3;
           std::tuple<int, int> pos4;
-          pos1 = std::make_tuple(-50, _screenHeight/2);
-          pos2 = std::make_tuple(_screenWidth/2, -50);
-          pos3 = std::make_tuple(_screenWidth + 50, _screenHeight/2);
-          pos4 = std::make_tuple(_screenWidth/2, _screenHeight + 50);
+          pos1 = std::make_tuple(50, _screenHeight/2);
+          pos2 = std::make_tuple(_screenWidth/2, 50);
+          pos3 = std::make_tuple(_screenWidth - 50, _screenHeight/2);
+          pos4 = std::make_tuple(_screenWidth/2, _screenHeight - 50);
           _spawnPoints.push_back(pos1);
           _spawnPoints.push_back(pos2);
           _spawnPoints.push_back(pos3);
@@ -31,26 +31,37 @@ Army::Army(
       }
 
 void Army::spawn() {
+    //Choose a random Spawning Point
+    std::uniform_int_distribution<int> distribution(0, 3);
+    int randomPos = distribution(_generator);
+
     if (_spawnTimer.getTicks() >= 2000) {
         _spawnTimer.start();
         _enemies.emplace_back(
             Enemy(
-                _spawnPoints[0],
-                _target,
+                _spawnPoints[randomPos],
                 &_texture
             )
         );
+        std::cout << "Enemy Spawned!" << std::endl;
     }
 }
 
-void Army::updateEnemies(float timeStep) {
+void Army::move(float timeStep)
+{
+    if (!_enemies.empty()) {
+        for (auto enemy = _enemies.begin(); enemy <= _enemies.end(); enemy++) {
+            enemy->updateSpeed(_target->getPosX(), _target->getPosY());
+            enemy->move(timeStep);
+        }
+    }
+}
+
+void Army::updateEnemies() {
     //Eventually all enemies will get popped out
     if (!_enemies.empty()) {
         if (_enemies.front().getHealth() < 1) {
             _enemies.pop_front();
-        }
-        for (auto enemy = _enemies.begin(); enemy <= _enemies.end(); enemy++) {
-            enemy->move(timeStep);
         }
     }
 }

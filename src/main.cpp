@@ -47,7 +47,7 @@ int main(int argc, char* args[]) {
     kScreenWidth, 
     kScreenHeight,
     &spaceship,
-    std::move(spaceshipTexture));
+    std::move(enemyArmyTexture));
   
   Game untitled(
     rendererPtr, 

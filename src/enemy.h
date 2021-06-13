@@ -12,12 +12,10 @@ class Enemy {
 		//Initializes the variables
 		Enemy(
 			std::tuple<int, int> spawningPos,
-			Player* target,
             Texture* texture);
 		
 		//Redirectionates the enemy
-		void updateDirection();
-		void updateSpeed();
+		void updateSpeed(int targetX, int targetY);
 
 		//Moves the enemy
 		void move(float timeStep);
@@ -29,9 +27,6 @@ class Enemy {
 		int getHealth();
 
     private:
-		//Target player
-		Player* _target;
-
         //Designated texture
         Texture* _texture;
 

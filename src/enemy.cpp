@@ -4,45 +4,40 @@
 
 Enemy::Enemy(
     std::tuple<int, int> spawningPos,
-	Player* target,
     Texture* texture)
-    : _target(target),
-      _texture(texture),
+    : _texture(texture),
       _health(1),
       _width(50),
       _height(50),
       _vel(240),
       _posX(std::get<0>(spawningPos)),
       _posY(std::get<1>(spawningPos)),
-      _direction(0),
+      _direction(90),
       _velX(0),
       _velY(0) {}
 
-void Enemy::updateDirection() {
-    //Make a steadier redirectioning
-    if (_target->getPosX() == _posX) {
-        if (_target->getPosY() >= _posY) {
+void Enemy::updateSpeed(int targetX, int targetY) {
+    //Redirect the enemy to the target
+    if (targetX == _posX) {
+        if (targetY >= _posY) {
             _direction = 180;
-        } else if (_target->getPosY() < _posY) {
+        } else if (targetY < _posY) {
             _direction = 0;
         }
     } else {
         _direction = 
-            (atan2((_target->getPosY() - _posY), (_target->getPosX() - _posX))
+            (atan2((targetY - _posY), (targetX - _posX))
             *180
             /M_PI)
             + 90;
     }
-}
 
-void Enemy::updateSpeed() {
+    //Update speed
     _velX = (sin(_direction*M_PI/180.0))*_vel;
     _velY = -(cos(_direction*M_PI/180.0))*_vel;
 }
 
 void Enemy::move(float timeStep) {
-    updateDirection();
-    updateSpeed();
     //Move the enemy left or right
     _posX += _velX*timeStep;
     //Move the enemy up or down

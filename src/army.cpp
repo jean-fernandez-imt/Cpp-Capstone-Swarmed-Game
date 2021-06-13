@@ -86,3 +86,7 @@ void Army::render() {
         }
     }
 } 
+
+std::deque<Collider>& Army::getColliders() {
+    return _colliders;
+}

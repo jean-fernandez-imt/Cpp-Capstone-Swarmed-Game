@@ -76,3 +76,7 @@ void Gun::render() {
         }
     }
 }
+
+std::deque<Collider>& Gun::getColliders() {
+    return _colliders;
+}

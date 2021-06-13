@@ -24,6 +24,8 @@ class Gun {
 
         void render();
 
+        std::deque<Collider>&  getColliders();
+
     private:
         //Screen size references
         const std::size_t _screenWidth;

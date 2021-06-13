@@ -59,6 +59,7 @@ void Game::update(Timer* stepTimer) {
   //Update the enemy Army
   _enemyArmy->move(timeStep);
   _enemyArmy->updateEnemies();
+  _enemyArmy->updateColliders();
 
   //Restart step timer
   stepTimer->start();

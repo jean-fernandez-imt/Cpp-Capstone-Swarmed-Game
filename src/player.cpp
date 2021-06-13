@@ -16,7 +16,11 @@ Player::Player(
       _posY(_screenHeight/2),
       _angle(0),
       _velX(0),
-      _velY(0) {}
+      _velY(0),
+      _hp(5) {
+          _collider.r = _width/2;
+          shiftColliders();
+      }
 
 void Player::handleEvent(SDL_Event& e) {
     //If a key was pressed
@@ -77,6 +81,8 @@ void Player::move(float timeStep) {
         //Move back
         _posY = _screenHeight - _height/2;
     }
+    
+    shiftColliders();
 }
 
 void Player::render() {
@@ -94,4 +100,18 @@ int Player::getPosY() {
 
 double Player::getAngle() {
     return _angle;
+}
+
+int Player::getHP() {
+    return _hp;
+}
+
+Collider& Player::getCollider() {
+    return _collider;
+}
+
+void Player::shiftColliders() {
+    //Align collider to center of player
+	_collider.x = _posX;
+	_collider.y = _posY;
 }

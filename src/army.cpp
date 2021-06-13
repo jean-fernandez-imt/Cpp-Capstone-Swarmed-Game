@@ -17,10 +17,10 @@ Army::Army(
           std::tuple<int, int> pos2;
           std::tuple<int, int> pos3;
           std::tuple<int, int> pos4;
-          pos1 = std::make_tuple(50, _screenHeight/2);
-          pos2 = std::make_tuple(_screenWidth/2, 50);
-          pos3 = std::make_tuple(_screenWidth - 50, _screenHeight/2);
-          pos4 = std::make_tuple(_screenWidth/2, _screenHeight - 50);
+          pos1 = std::make_tuple(-50, _screenHeight/2);
+          pos2 = std::make_tuple(_screenWidth/2, -50);
+          pos3 = std::make_tuple(_screenWidth + 50, _screenHeight/2);
+          pos4 = std::make_tuple(_screenWidth/2, _screenHeight + 50);
           _spawnPoints.push_back(pos1);
           _spawnPoints.push_back(pos2);
           _spawnPoints.push_back(pos3);
@@ -35,14 +35,16 @@ void Army::spawn() {
     std::uniform_int_distribution<int> distribution(0, 3);
     int randomPos = distribution(_generator);
 
-    if (_spawnTimer.getTicks() >= 2000) {
+    if (_spawnTimer.getTicks() >= 2500) {
         _spawnTimer.start();
-        _enemies.emplace_back(
-            Enemy(
-                _spawnPoints[randomPos],
-                &_texture
-            )
-        );
+        Enemy newEnemy(_spawnPoints[randomPos], &_texture);
+        Collider newCollider = {
+            newEnemy.getWidth(),
+            newEnemy.getPosX(),
+            newEnemy.getPosY()
+        };
+        _enemies.push_back(newEnemy);
+        _colliders.push_back(newCollider);
         std::cout << "Enemy Spawned!" << std::endl;
     }
 }
@@ -62,6 +64,16 @@ void Army::updateEnemies() {
     if (!_enemies.empty()) {
         if (_enemies.front().getHealth() < 1) {
             _enemies.pop_front();
+            _colliders.pop_front();
+        }
+    }
+}
+
+void Army::updateColliders() {
+    if (!_enemies.empty()) {
+        for (int i = 0; i < _enemies.size(); i++) {
+            _colliders[i].x = _enemies[i].getPosX();
+            _colliders[i].y = _enemies[i].getPosY();
         }
     }
 }

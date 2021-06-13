@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 
 #include "texture.h"
+#include "collider.h"
 
 class Player {
     public:
@@ -32,6 +33,12 @@ class Player {
 		//Get the angle of the player
 		double getAngle();
 
+		//Get the player's remaining HP
+		int getHP();
+
+		//Get the player's collider
+		Collider& getCollider();
+
     private:
         //Screen size references
         const std::size_t _screenWidth;
@@ -57,6 +64,13 @@ class Player {
 		//The velocity of the player
 		int _velX;
         int _velY;
+
+		//Hit Points
+		int _hp;
+
+		//Collider control
+		Collider _collider;
+		void shiftColliders();
 };
 
 #endif

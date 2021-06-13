@@ -12,7 +12,7 @@ Enemy::Enemy(
       _vel(240),
       _posX(std::get<0>(spawningPos)),
       _posY(std::get<1>(spawningPos)),
-      _direction(90),
+      _direction(0),
       _velX(0),
       _velY(0) {}
 
@@ -53,4 +53,20 @@ void Enemy::render() {
 
 int Enemy::getHealth() {
     return _health;
+}
+
+int Enemy::getWidth() {
+    return _width;
+}
+
+int Enemy::getHeight() {
+    return _height;
+}
+
+int Enemy::getPosX() {
+    return _posX;
+}
+
+int Enemy::getPosY() {
+    return _posY;
 }

@@ -5,7 +5,6 @@
 #include <tuple>
 
 #include "texture.h"
-#include "player.h"
 
 class Enemy {
     public:
@@ -23,8 +22,16 @@ class Enemy {
 		//Shows the enemy on the screen
 		void render();
 
-		//Verify if the enemy is still alive
+		//Verify if enemy is still alive
 		int getHealth();
+
+		//Get dimensions of the enemy
+		int getWidth();
+		int getHeight();
+
+		//Get position of enemy
+		int getPosX();
+		int getPosY();
 
     private:
         //Designated texture

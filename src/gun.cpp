@@ -17,30 +17,19 @@ Gun::Gun(
       _speed(10.0) {}
 
 void Gun::handleEvent(SDL_Event& e) {
-    //If mouse event happened
-	if(e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP) {
-
-        //Choose actions on mouse event
-        switch(e.type){    
-            case SDL_MOUSEBUTTONDOWN:
-            _bullets.emplace_back(
-                Bullet(
-                    _screenWidth,
-                    _screenHeight,
-                    &_texture,
-                    _x,
-                    _y,
-                    _dx,
-                    _dy,
-                    _speed
-                )
-            );
-            break;
-            
-            case SDL_MOUSEBUTTONUP:
-        
-            break;
-        }
+    //If mouse button clicked 
+	if(e.type == SDL_MOUSEBUTTONDOWN) {
+        Bullet newBullet(
+            _screenWidth,
+                _screenHeight,
+                &_texture,
+                _x,
+                _y,
+                _dx,
+                _dy,
+                _speed
+        );
+        _bullets.push_back(newBullet);
 	}
 }
 

@@ -15,7 +15,7 @@
 class Game {
   public:
     Game(
-      SDL_Renderer* renderer, 
+      Renderer* renderer, 
       Aim* mark, 
       Player* spaceship,
       Gun* spaceshipGun,
@@ -25,7 +25,7 @@ class Game {
     int getScore();
 
   private:
-    SDL_Renderer* _renderer;
+    Renderer* _renderer;
     Aim* _mark;
     Player* _spaceship;
     Gun* _spaceshipGun;

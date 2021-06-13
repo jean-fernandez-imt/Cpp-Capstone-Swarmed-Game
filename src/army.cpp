@@ -35,7 +35,7 @@ void Army::spawn() {
     std::uniform_int_distribution<int> distribution(0, 3);
     int randomPos = distribution(_generator);
 
-    if (_spawnTimer.getTicks() >= 2500) {
+    if (_spawnTimer.getTicks() >= 500) {
         _spawnTimer.start();
         Enemy* newEnemy = new Enemy(_spawnPoints[randomPos], &_texture);
         _enemies.push_back(newEnemy);

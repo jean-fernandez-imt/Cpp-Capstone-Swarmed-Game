@@ -71,7 +71,10 @@ SDL_Renderer* Renderer::getRenderer() {
   return sdl_renderer;
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps) {
-  std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
+void Renderer::UpdateWindowTitle(int score, int hp) {
+  std::string title{
+    "Swarmed Score: " 
+    + std::to_string(score) 
+    + " HP: " + std::to_string(hp)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }

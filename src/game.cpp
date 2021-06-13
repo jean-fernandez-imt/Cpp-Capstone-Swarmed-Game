@@ -3,7 +3,7 @@
 #include "game.h"
 
 Game::Game(
-  SDL_Renderer* renderer, 
+  Renderer* renderer, 
   Aim* mark, 
   Player* spaceship,
   Gun* spaceshipGun,
@@ -62,13 +62,16 @@ void Game::update(Timer* stepTimer) {
   //Update Collisions
   updateCollisions();
 
+  //Update the screen
+  _renderer->UpdateWindowTitle(_score, _spaceship->getHP());
+
   //Restart step timer
   stepTimer->start();
 }
 
 void Game::render() {
   //Clear screen
-  SDL_RenderClear(_renderer);
+  SDL_RenderClear(_renderer->getRenderer());
 
   //Render objects
   _mark->render();
@@ -77,7 +80,7 @@ void Game::render() {
   _enemyArmy->render();
 
   //Update screen
-  SDL_RenderPresent(_renderer);
+  SDL_RenderPresent(_renderer->getRenderer());
 }
 
 int Game::getScore() {return _score;}
@@ -92,6 +95,7 @@ void Game::updateCollisions() {
       if (checkCollision(enemy->getCollider(), bullet->getCollider())) {
         enemy->takeHit();
         bullet->takeHit();
+        _score += 1;
       }
     }
   }

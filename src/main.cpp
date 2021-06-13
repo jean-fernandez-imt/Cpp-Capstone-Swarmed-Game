@@ -50,7 +50,7 @@ int main(int argc, char* args[]) {
     std::move(enemyArmyTexture));
   
   Game swarmed(
-    rendererPtr, 
+    &renderer, 
     &mark,
     &spaceship,
     &spaceshipGun,

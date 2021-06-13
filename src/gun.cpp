@@ -48,9 +48,11 @@ void Gun::updateTarget() {
 void Gun::clearBullets() {
     //Eventually all bullets will get dequeued
     if (!_bullets.empty()) {
-        if (_bullets.front()->getHealth() < 1) {
-            delete _bullets.front();
-            _bullets.pop_front();
+        for (int i = 0; i < _bullets.size(); i++) {
+            if (_bullets[i]->getHealth() < 1) {
+                delete _bullets[i];
+                _bullets.erase(_bullets.begin() + i);
+            }
         }
     }
 }

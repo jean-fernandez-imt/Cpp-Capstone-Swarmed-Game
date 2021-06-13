@@ -35,7 +35,7 @@ void Army::spawn() {
     std::uniform_int_distribution<int> distribution(0, 3);
     int randomPos = distribution(_generator);
 
-    if (_spawnTimer.getTicks() >= 500) {
+    if (_spawnTimer.getTicks() >= 700) {
         _spawnTimer.start();
         Enemy* newEnemy = new Enemy(_spawnPoints[randomPos], &_texture);
         _enemies.push_back(newEnemy);
@@ -56,9 +56,11 @@ void Army::move(float timeStep)
 void Army::updateEnemies() {
     //Eventually all enemies will get popped out
     if (!_enemies.empty()) {
-        if (_enemies.front()->getHealth() < 1) {
-            delete _enemies.front();
-            _enemies.pop_front();
+        for (int i = 0; i < _enemies.size(); i++) {
+            if (_enemies[i]->getHealth() < 1) {
+                delete _enemies[i];
+                _enemies.erase(_enemies.begin() + i);
+            }
         }
     }
 }

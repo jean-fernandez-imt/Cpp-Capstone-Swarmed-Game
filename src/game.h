@@ -33,6 +33,10 @@ class Game {
 
     int _score{0};
 
+    //Timers
+    Timer _stepTimer;
+    Timer _afterHitTimer;
+
     //Main Game Loop
     void input(SDL_Event* e, bool* running);
     void update(Timer* stepTimer);

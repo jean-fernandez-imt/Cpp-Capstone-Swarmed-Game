@@ -12,17 +12,19 @@ Game::Game(
       _mark(mark),
       _spaceship(spaceship),
       _spaceshipGun(spaceshipGun),
-      _enemyArmy(enemyArmy) {}
+      _enemyArmy(enemyArmy) {
+        //Start invulnerability Timer
+        _afterHitTimer.start();
+      }
 
 void Game::run() {
-  Timer stepTimer;
   SDL_Event e;
   bool running = true;
 
   while (running) {
     //Main Game Loop
     input(&e, &running);
-    update(&stepTimer);
+    update(&_stepTimer);
     render();
   }
 }
@@ -103,8 +105,11 @@ void Game::updateCollisions() {
   //Enemies vs Player
   for (auto enemy: enemies) {
     if (checkCollision(enemy->getCollider(), _spaceship->getCollider())) {
-      enemy->takeHit();
-      _spaceship->takeHit();
+      if (_afterHitTimer.getTicks() >= 200) {
+        _afterHitTimer.start();
+        enemy->takeHit();
+        _spaceship->takeHit();
+      }
     }
   }
 }

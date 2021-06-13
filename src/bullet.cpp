@@ -55,3 +55,7 @@ int Bullet::getX() {
 int Bullet::getY() {
     return _y;
 }
+
+void Bullet::takeHit() {
+    _health -= 1;
+}

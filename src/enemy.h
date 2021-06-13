@@ -33,6 +33,9 @@ class Enemy {
 		int getPosX();
 		int getPosY();
 
+		//In case of collision
+		void takeHit();
+
     private:
         //Designated texture
         Texture* _texture;

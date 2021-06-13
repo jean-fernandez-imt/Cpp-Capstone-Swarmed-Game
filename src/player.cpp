@@ -110,6 +110,10 @@ Collider& Player::getCollider() {
     return _collider;
 }
 
+void Player::takeHit() {
+    _hp -= 1;
+}
+
 void Player::shiftColliders() {
     //Align collider to center of player
 	_collider.x = _posX;

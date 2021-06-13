@@ -27,6 +27,9 @@ class Bullet {
         int getX();
         int getY();
 
+        //In case of collision
+        void takeHit();
+
     private:
         //Screen size references
         const std::size_t _screenWidth;

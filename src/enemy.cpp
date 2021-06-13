@@ -70,3 +70,7 @@ int Enemy::getPosX() {
 int Enemy::getPosY() {
     return _posY;
 }
+
+void Enemy::takeHit() {
+    _health -= 1;
+}

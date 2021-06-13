@@ -39,6 +39,9 @@ class Player {
 		//Get the player's collider
 		Collider& getCollider();
 
+		//In case of collision
+		void takeHit();
+
     private:
         //Screen size references
         const std::size_t _screenWidth;

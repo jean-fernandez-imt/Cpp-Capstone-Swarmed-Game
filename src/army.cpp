@@ -39,7 +39,7 @@ void Army::spawn() {
         _spawnTimer.start();
         Enemy newEnemy(_spawnPoints[randomPos], &_texture);
         Collider newCollider = {
-            newEnemy.getWidth(),
+            newEnemy.getWidth()/2,
             newEnemy.getPosX(),
             newEnemy.getPosY()
         };

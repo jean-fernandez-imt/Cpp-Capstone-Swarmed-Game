@@ -19,6 +19,14 @@ class Bullet {
 
         int getHealth();
 
+        //Get Bullet's dimension
+        int getWidth();
+        int getHeight();
+        
+        //Get Bullet's position
+        int getX();
+        int getY();
+
     private:
         //Screen size references
         const std::size_t _screenWidth;
@@ -26,6 +34,10 @@ class Bullet {
 
         //Borrowed Texture
         Texture* _texture;
+
+        //Bullet's dimensions
+        int _width;
+        int _height;
 
         //Movement control variables
         int _x;

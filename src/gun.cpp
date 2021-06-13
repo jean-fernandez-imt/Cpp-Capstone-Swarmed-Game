@@ -29,6 +29,11 @@ void Gun::handleEvent(SDL_Event& e) {
                 _dy,
                 _speed
         );
+        Collider newCollider {
+            newBullet.getWidth()/2,
+            newBullet.getX(),
+            newBullet.getY()
+        };
         _bullets.push_back(newBullet);
 	}
 }
@@ -50,6 +55,16 @@ void Gun::clearBullets() {
     if (!_bullets.empty()) {
         if (_bullets.front().getHealth() < 1) {
             _bullets.pop_front();
+            _colliders.pop_front();
+        }
+    }
+}
+
+void Gun::updateColliders() {
+    if (!_bullets.empty()) {
+        for (int i = 0; i < _bullets.size(); i++) {
+            _colliders[i].x = _bullets[i].getX();
+            _colliders[i].y = _bullets[i].getY();
         }
     }
 }

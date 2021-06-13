@@ -14,6 +14,8 @@ Bullet::Bullet(
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
       _texture(texture),
+      _width(10),
+      _height(10),
       _x(x),
       _y(y),
       _dx(dx),
@@ -36,4 +38,20 @@ void Bullet::fire() {
 
 int Bullet::getHealth() {
     return _health;
+}
+
+int Bullet::getWidth() {
+    return _width;
+}
+
+int Bullet::getHeight() {
+    return _height;
+}
+
+int Bullet::getX() {
+    return _x;
+}
+
+int Bullet::getY() {
+    return _y;
 }

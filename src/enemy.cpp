@@ -42,6 +42,8 @@ void Enemy::move(float timeStep) {
     _posX += _velX*timeStep;
     //Move the enemy up or down
     _posY += _velY*timeStep;
+
+    shiftCollider();
 }
 
 void Enemy::render() {
@@ -71,6 +73,15 @@ int Enemy::getPosY() {
     return _posY;
 }
 
+Collider& Enemy::getCollider() {
+    return _collider;
+}
+
 void Enemy::takeHit() {
     _health -= 1;
+}
+
+void Enemy::shiftCollider() {
+    _collider.x = _posX;
+    _collider.y = _posY;
 }

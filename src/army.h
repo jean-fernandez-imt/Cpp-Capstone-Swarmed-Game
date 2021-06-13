@@ -10,7 +10,6 @@
 #include "player.h"
 #include "enemy.h"
 #include "timer.h"
-#include "collider.h"
 
 class Army {
     public:
@@ -30,13 +29,10 @@ class Army {
         //Check if the enemy is still alive
         void updateEnemies();
 
-        //Update the status of the colliders
-        void updateColliders();
-
         //Rendering the enemies
         void render();
 
-        std::deque<Collider>& getColliders();
+        std::deque<Enemy*> getEnemies();
 
     private:
         //Screen size references
@@ -57,8 +53,7 @@ class Army {
         std::random_device _generator;
 
         //Existing enemies and colliders
-        std::deque<Enemy> _enemies;
-        std::deque<Collider> _colliders;
+        std::deque<Enemy*> _enemies;
 };
 
 #endif

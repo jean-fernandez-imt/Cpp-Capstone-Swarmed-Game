@@ -1,11 +1,10 @@
 #ifndef COLLIDER_H
 #define COLLIDER_H
 
-//A circular collider stucture
-typedef struct stCollider
-{
-	int x, y;
-	int r;
+typedef struct stCollider {
+    int r;
+    int x;
+    int y;
 } Collider;
 
 #endif

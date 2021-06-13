@@ -5,6 +5,7 @@
 #include <tuple>
 
 #include "texture.h"
+#include "collider.h"
 
 class Enemy {
     public:
@@ -33,6 +34,9 @@ class Enemy {
 		int getPosX();
 		int getPosY();
 
+		//Get Collider for check
+		Collider& getCollider();
+
 		//In case of collision
 		void takeHit();
 
@@ -60,6 +64,10 @@ class Enemy {
 		//The velocity of the enemy
 		int _velX;
         int _velY;
+
+		//Collider control
+		Collider _collider;
+		void shiftCollider();
 };
 
 #endif

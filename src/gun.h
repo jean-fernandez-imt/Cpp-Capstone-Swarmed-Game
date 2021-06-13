@@ -6,7 +6,6 @@
 #include "texture.h"
 #include "player.h"
 #include "bullet.h"
-#include "collider.h"
 
 class Gun {
     public:
@@ -20,11 +19,10 @@ class Gun {
 		void handleEvent(SDL_Event& e);
 
         void updateGun();
-        void updateColliders();
 
         void render();
 
-        std::deque<Collider>&  getColliders();
+        std::deque<Bullet*>  getBullets();
 
     private:
         //Screen size references
@@ -36,8 +34,7 @@ class Gun {
         Player* _player;
 
         //Bullets and colliders currently on screen
-        std::deque<Bullet> _bullets;
-        std::deque<Collider> _colliders;
+        std::deque<Bullet*> _bullets;
 
         //Movement control variables
         int _x;

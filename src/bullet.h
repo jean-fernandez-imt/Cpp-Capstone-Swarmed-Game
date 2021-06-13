@@ -2,6 +2,7 @@
 #define BULLET_H
 
 #include "texture.h"
+#include "collider.h"
 
 class Bullet {
     public:
@@ -27,6 +28,9 @@ class Bullet {
         int getX();
         int getY();
 
+        //Get the collider for check
+        Collider& getCollider();
+
         //In case of collision
         void takeHit();
 
@@ -49,6 +53,10 @@ class Bullet {
         double _dy;
         double _speed;
         int _health;
+
+        //Collider control
+        Collider _collider;
+        void shiftCollider();
 };
 
 #endif

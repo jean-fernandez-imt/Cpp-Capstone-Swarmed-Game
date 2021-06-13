@@ -37,14 +37,8 @@ void Army::spawn() {
 
     if (_spawnTimer.getTicks() >= 2500) {
         _spawnTimer.start();
-        Enemy newEnemy(_spawnPoints[randomPos], &_texture);
-        Collider newCollider = {
-            newEnemy.getWidth()/2,
-            newEnemy.getPosX(),
-            newEnemy.getPosY()
-        };
+        Enemy* newEnemy = new Enemy(_spawnPoints[randomPos], &_texture);
         _enemies.push_back(newEnemy);
-        _colliders.push_back(newCollider);
         std::cout << "Enemy Spawned!" << std::endl;
     }
 }
@@ -52,7 +46,7 @@ void Army::spawn() {
 void Army::move(float timeStep)
 {
     if (!_enemies.empty()) {
-        for (auto enemy = _enemies.begin(); enemy <= _enemies.end(); enemy++) {
+        for (Enemy* enemy: _enemies) {
             enemy->updateSpeed(_target->getPosX(), _target->getPosY());
             enemy->move(timeStep);
         }
@@ -62,18 +56,9 @@ void Army::move(float timeStep)
 void Army::updateEnemies() {
     //Eventually all enemies will get popped out
     if (!_enemies.empty()) {
-        if (_enemies.front().getHealth() < 1) {
+        if (_enemies.front()->getHealth() < 1) {
+            delete _enemies.front();
             _enemies.pop_front();
-            _colliders.pop_front();
-        }
-    }
-}
-
-void Army::updateColliders() {
-    if (!_enemies.empty()) {
-        for (int i = 0; i < _enemies.size(); i++) {
-            _colliders[i].x = _enemies[i].getPosX();
-            _colliders[i].y = _enemies[i].getPosY();
         }
     }
 }
@@ -81,12 +66,12 @@ void Army::updateColliders() {
 void Army::render() {
     //Render the remaining enemies
     if (!_enemies.empty()) {
-        for (auto enemy = _enemies.begin(); enemy <= _enemies.end(); enemy++) {
+        for (Enemy* enemy: _enemies) {
             enemy->render();
         }
     }
 }
 
-std::deque<Collider>& Army::getColliders() {
-    return _colliders;
+std::deque<Enemy*> Army::getEnemies() {
+    return _enemies;
 }

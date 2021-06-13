@@ -36,7 +36,7 @@ class Player {
 		//Get the player's remaining HP
 		int getHP();
 
-		//Get the player's collider
+		//Get collider for check
 		Collider& getCollider();
 
 		//In case of collision
@@ -73,7 +73,7 @@ class Player {
 
 		//Collider control
 		Collider _collider;
-		void shiftColliders();
+		void shiftCollider();
 };
 
 #endif

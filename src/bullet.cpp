@@ -21,7 +21,11 @@ Bullet::Bullet(
       _dx(dx),
       _dy(dy),
       _speed(speed),
-      _health(1) {}
+      _health(1) {
+          _collider.r = _width/2;
+          _collider.x = _x;
+          _collider.y = _y;
+      }
 
 void Bullet::fire() {
     _x += _dx;
@@ -34,6 +38,8 @@ void Bullet::fire() {
     if (_health == 1) {
         _texture->render(_x, _y);
     }
+
+    shiftCollider();
 }
 
 int Bullet::getHealth() {
@@ -56,6 +62,16 @@ int Bullet::getY() {
     return _y;
 }
 
+Collider& Bullet::getCollider() {
+    return _collider;
+}
+
 void Bullet::takeHit() {
     _health -= 1;
+}
+
+
+void Bullet::shiftCollider() {
+    _collider.x = _x;
+    _collider.y = _y;
 }

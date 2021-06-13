@@ -14,7 +14,11 @@ Enemy::Enemy(
       _posY(std::get<1>(spawningPos)),
       _direction(0),
       _velX(0),
-      _velY(0) {}
+      _velY(0) {
+          _collider.r = _width/2;
+          _collider.x = _posX;
+          _collider.y = _posY;
+      }
 
 void Enemy::updateSpeed(int targetX, int targetY) {
     //Redirect the enemy to the target

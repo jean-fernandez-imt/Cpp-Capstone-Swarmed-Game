@@ -49,17 +49,17 @@ int main(int argc, char* args[]) {
     &spaceship,
     std::move(enemyArmyTexture));
   
-  Game untitled(
+  Game swarmed(
     rendererPtr, 
     &mark,
     &spaceship,
     &spaceshipGun,
     &enemyArmy);
 
-  untitled.run();
+  swarmed.run();
 
   std::cout << "Game has terminated successfully!\n";
-  std::cout << "Score: " << untitled.getScore() << "\n";
+  std::cout << "Score: " << swarmed.getScore() << "\n";
 
   return 0;
 }

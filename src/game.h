@@ -10,6 +10,7 @@
 #include "gun.h"
 #include "army.h"
 #include "timer.h"
+#include "collider.h"
 
 class Game {
   public:
@@ -36,6 +37,11 @@ class Game {
     void input(SDL_Event* e, bool* running);
     void update(Timer* stepTimer);
     void render();
+
+    //Collision control helper functions
+    void updateCollisions();
+    bool checkCollision(Collider& a, Collider& b);
+    double distanceSquared(int x1, int y1, int x2, int y2);
 };
 
 #endif

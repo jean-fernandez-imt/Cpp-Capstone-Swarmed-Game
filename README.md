@@ -31,9 +31,13 @@ In this project, you can build your own C++ application or extend this Snake gam
 4. Run it: `./SnakeGame`.
 
 ## Special Thanks
-* OpenGameArt.org: oglsdl - Aim texture.
-* OpenGameArt.org: Tummyache - Spaceship texture.
-* OpenGameArt.org: Redshrike - Enemy texture.
+* OpenGameArt.org: oglsdl - [Scope](https://opengameart.org/content/aim) texture.
+* OpenGameArt.org: Gumichan01 - [Bullet](https://opengameart.org/content/tx-bullet-0) texture.
+* OpenGameArt.org: Tummyache - [Spaceship](https://opengameart.org/content/purple-space-ship) texture.
+* OpenGameArt.org: Redshrike - [Enemy](https://opengameart.org/content/space-ship-building-bits-volume-1) texture.
+
+* LazyFooProductions: [SDL Tutorials](https://lazyfoo.net/tutorials/SDL/index.php)
+* ParallelRealities: [SDL2 Game Tutorials](https://www.parallelrealities.co.uk/tutorials/)
 
 ## CC Attribution-ShareAlike 4.0 International
 

@@ -2,6 +2,7 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
+#include "parameters.h"
 #include "renderer.h"
 #include "texture.h"
 #include "aim.h"
@@ -11,8 +12,8 @@
 #include "game.h"
 
 int main(int argc, char* args[]) {
-  constexpr std::size_t kScreenWidth{700};
-  constexpr std::size_t kScreenHeight{700};
+  constexpr std::size_t kScreenWidth{MAIN_SCREEN_WIDTH};
+  constexpr std::size_t kScreenHeight{MAIN_SCREEN_HEIGHT};
 
   Renderer renderer(kScreenWidth, kScreenHeight);
   SDL_Renderer* rendererPtr = renderer.getRenderer();
@@ -26,7 +27,7 @@ int main(int argc, char* args[]) {
   //Load SDL_Texture from files
   markTexture.loadFromFile("../textures/aim.png");
   spaceshipTexture.loadFromFile("../textures/spaceship.png");
-  bulletTexture.loadFromFile("../textures/playerBullet.png");
+  bulletTexture.loadFromFile("../textures/bullet.png");
   enemyArmyTexture.loadFromFile("../textures/enemy.png");
 
   Aim mark(std::move(markTexture));

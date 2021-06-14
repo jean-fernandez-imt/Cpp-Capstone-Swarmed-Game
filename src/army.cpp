@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 
+#include "parameters.h"
 #include "army.h"
 
 Army::Army(
@@ -17,10 +18,20 @@ Army::Army(
           std::tuple<int, int> pos2;
           std::tuple<int, int> pos3;
           std::tuple<int, int> pos4;
-          pos1 = std::make_tuple(-50, _screenHeight/2);
-          pos2 = std::make_tuple(_screenWidth/2, -50);
-          pos3 = std::make_tuple(_screenWidth + 50, _screenHeight/2);
-          pos4 = std::make_tuple(_screenWidth/2, _screenHeight + 50);
+          pos1 = std::make_tuple(
+              -ARMY_SPAWN_SCREEN_OFFSET, 
+              _screenHeight/2);
+          pos2 = std::make_tuple(
+              _screenWidth/2, 
+              -ARMY_SPAWN_SCREEN_OFFSET);
+          pos3 = std::make_tuple(
+              _screenWidth 
+              + ARMY_SPAWN_SCREEN_OFFSET, 
+              _screenHeight/2);
+          pos4 = std::make_tuple(
+              _screenWidth/2, 
+              _screenHeight 
+              + ARMY_SPAWN_SCREEN_OFFSET);
           _spawnPoints.push_back(pos1);
           _spawnPoints.push_back(pos2);
           _spawnPoints.push_back(pos3);
@@ -35,7 +46,7 @@ void Army::spawn() {
     std::uniform_int_distribution<int> distribution(0, 3);
     int randomPos = distribution(_generator);
 
-    if (_spawnTimer.getTicks() >= 700) {
+    if (_spawnTimer.getTicks() >= ARMY_SPAWN_COOLDOWN_TIME) {
         _spawnTimer.start();
         Enemy* newEnemy = new Enemy(_spawnPoints[randomPos], &_texture);
         _enemies.push_back(newEnemy);
@@ -54,7 +65,7 @@ void Army::move(float timeStep)
 }
 
 void Army::updateEnemies() {
-    //Eventually all enemies will get popped out
+    //Delete the dead enemies
     if (!_enemies.empty()) {
         for (int i = 0; i < _enemies.size(); i++) {
             if (_enemies[i]->getHealth() < 1) {

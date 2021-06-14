@@ -1,20 +1,18 @@
+#include "parameters.h"
 #include "aim.h"
 
 Aim::Aim(Texture texture): _texture(std::move(texture)) {
-	_position.x = 0;
-	_position.y = 0;
+	_position.x = AIM_START_POS_X;
+	_position.y = AIM_START_POS_Y;
 }
 
 void Aim::handleEvent(SDL_Event& e) {
-	//If mouse event happened
-	if(e.type == SDL_MOUSEMOTION 
-		|| e.type == SDL_MOUSEBUTTONDOWN 
-		|| e.type == SDL_MOUSEBUTTONUP) {
+	if(e.type == SDL_MOUSEMOTION) {
 		//Get mouse position
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 
-		//Update mouse position
+		//Update scope's position
 		_position.x = x;
 		_position.y = y;
 	}

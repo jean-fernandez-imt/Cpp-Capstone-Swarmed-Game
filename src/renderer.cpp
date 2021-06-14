@@ -59,7 +59,7 @@ Renderer::Renderer(
   }
 }
 
-// Destroy SDL elements with appropriate methods.
+// Destroy SDL elements with appropriate methods
 Renderer::~Renderer() {
   SDL_DestroyRenderer(sdl_renderer);
   SDL_DestroyWindow(sdl_window);

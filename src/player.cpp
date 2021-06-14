@@ -1,5 +1,6 @@
 #include <cmath>
 
+#include "parameters.h"
 #include "player.h"
 
 Player::Player(
@@ -9,22 +10,21 @@ Player::Player(
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
       _texture(std::move(texture)),
-      _width(80),
-      _height(80),
-      _vel(320),
+      _width(PLAYER_WIDTH),
+      _height(PLAYER_HEIGHT),
+      _vel(PLAYER_VELOCITY),
       _posX(_screenWidth/2),
       _posY(_screenHeight/2),
       _angle(0),
       _velX(0),
       _velY(0),
-      _hp(5) {
+      _hp(PLAYER_HP) {
           _collider.r = _width/2;
           _collider.x = _posX;
           _collider.y = _posY;
       }
 
 void Player::handleEvent(SDL_Event& e) {
-    //If a key was pressed
 	if(e.type == SDL_KEYDOWN && e.key.repeat == 0) {
         //Adjust the velocity
         switch(e.key.keysym.sym) {
@@ -61,25 +61,21 @@ void Player::updateAngle(SDL_Point aimPos) {
 }
 
 void Player::move(float timeStep) {
-    //Move the player left or right
     _posX += _velX*timeStep;
 
     //If the player went too far to the left or right
     if(_posX < _width/2) {
         _posX = _width/2;
     } else if (_posX > _screenWidth - _width/2) {
-        //Move back
         _posX = _screenWidth - _width/2;
     }
 
-    //Move the player up or down
     _posY += _velY*timeStep;
 
     //If the player went too far up or down
     if(_posY < _height/2) {
         _posY = _height/2;
     } else if (_posY > _screenHeight - _height/2) {
-        //Move back
         _posY = _screenHeight - _height/2;
     }
 
@@ -87,7 +83,6 @@ void Player::move(float timeStep) {
 }
 
 void Player::render() {
-    //Show the player
 	_texture.render(_posX - _width/2, _posY - _height/2, NULL, _angle);
 } 
 

@@ -11,38 +11,34 @@
 #include "enemy.h"
 #include "timer.h"
 
+//Spawns the player's enemies
 class Army {
     public:
-		//Initializes the variables
 		Army(
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
             Player* target,
             Texture texture);
 
-        //Spawning the enemies
         void spawn();
 
-        //Move the enemies
+        //Move the whole enemy fleet
         void move(float timeStep);
 
-        //Check if the enemy is still alive
+        //Check if an enemy is still alive
         void updateEnemies();
 
-        //Rendering the enemies
         void render();
 
         std::deque<Enemy*> getEnemies();
 
     private:
-        //Screen size references
         const std::size_t _screenWidth;
 		const std::size_t _screenHeight;
 
         //Target player
         Player* _target;
 
-        //Borrowed texture
         Texture _texture;
 
 		//Spawning control
@@ -52,7 +48,6 @@ class Army {
         //Random number generator
         std::random_device _generator;
 
-        //Existing enemies and colliders
         std::deque<Enemy*> _enemies;
 };
 

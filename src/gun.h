@@ -7,6 +7,7 @@
 #include "player.h"
 #include "bullet.h"
 
+//Shoots the bullets of the Player
 class Gun {
     public:
         Gun(
@@ -25,7 +26,6 @@ class Gun {
         std::deque<Bullet*>  getBullets();
 
     private:
-        //Screen size references
         const std::size_t _screenWidth;
 		const std::size_t _screenHeight;
 
@@ -33,10 +33,8 @@ class Gun {
         Texture _texture;
         Player* _player;
 
-        //Bullets and colliders currently on screen
         std::deque<Bullet*> _bullets;
 
-        //Movement control variables
         int _x;
         int _y;
         double _dx;

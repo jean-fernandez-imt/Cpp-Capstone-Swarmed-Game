@@ -12,6 +12,7 @@
 #include "timer.h"
 #include "collider.h"
 
+//Controls the Game Mechanics
 class Game {
   public:
     Game(
@@ -33,7 +34,6 @@ class Game {
 
     int _score{0};
 
-    //Timers
     Timer _stepTimer;
     Timer _afterHitTimer;
 

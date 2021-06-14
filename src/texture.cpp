@@ -3,14 +3,12 @@
 #include "texture.h"
 
 Texture::Texture(SDL_Renderer* renderer): _renderer(renderer) {
-	//Initialize
 	_texture = NULL;
 	_width = 0;
 	_height = 0;
 }
 
 Texture::~Texture() {
-	//Deallocate
 	release();
 }
 
@@ -95,7 +93,7 @@ void Texture::loadFromFile(std::string path) {
         std::cerr << "SDL2_IMG_Error: " << IMG_GetError() << std::endl;
 	}
 
-	//Color key image
+	//Color key image (for making BG Color transparent)
 	SDL_SetColorKey( 
 		loadedSurface, 
 		SDL_TRUE, 
@@ -112,15 +110,12 @@ void Texture::loadFromFile(std::string path) {
         std::cerr << "Unable to create texture from: " << path.c_str() << std::endl;
         std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
     } else {
-		//Get image dimensions
 		_width = loadedSurface->w;
 		_height = loadedSurface->h;
 	}
 
-    //Get rid of old loaded surface
     SDL_FreeSurface(loadedSurface);
 
-	//Store as Texture
 	_texture = newTexture;
 }
 
@@ -141,7 +136,6 @@ void Texture::render(
 		renderQuad.h = crop->h;
 	}
 
-	//Render to screen
 	SDL_RenderCopyEx(_renderer, _texture, crop, &renderQuad, angle, center, flip );
 }
 

@@ -7,6 +7,7 @@
 
 #include "texture.h"
 
+//Displays the elements on the screen
 class Renderer {
   public:
     Renderer (

@@ -1,5 +1,6 @@
 #include <math.h>
 
+#include "parameters.h"
 #include "bullet.h"
 
 Bullet::Bullet(
@@ -14,14 +15,14 @@ Bullet::Bullet(
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
       _texture(texture),
-      _width(10),
-      _height(10),
+      _width(BULLET_WIDTH),
+      _height(BULLET_HEIGHT),
       _x(x),
       _y(y),
       _dx(dx),
       _dy(dy),
       _speed(speed),
-      _health(1) {
+      _health(BULLET_HEALTH) {
           _collider.r = _width/2;
           _collider.x = _x;
           _collider.y = _y;
@@ -35,7 +36,7 @@ void Bullet::fire() {
         _health = 0;
     }
 
-    if (_health == 1) {
+    if (_health > 0) {
         _texture->render(_x, _y);
     }
 
@@ -69,7 +70,6 @@ Collider& Bullet::getCollider() {
 void Bullet::takeHit() {
     _health -= 1;
 }
-
 
 void Bullet::shiftCollider() {
     _collider.x = _x;

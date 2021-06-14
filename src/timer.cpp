@@ -3,7 +3,6 @@
 #include "timer.h"
 
 Timer::Timer() {
-    //Initialize the variables
     _startTicks = 0;
     _pausedTicks = 0;
 
@@ -12,22 +11,15 @@ Timer::Timer() {
 }
 
 void Timer::start() {
-    //Start the timer
     _started = true;
-
-    //Unpause the timer
     _paused = false;
 
-    //Get the current clock time
     _startTicks = SDL_GetTicks();
 	_pausedTicks = 0;
 }
 
 void Timer::stop() {
-    //Stop the timer
     _started = false;
-
-    //Unpause the timer
     _paused = false;
 
 	//Clear tick variables
@@ -36,9 +28,7 @@ void Timer::stop() {
 }
 
 void Timer::pause() {
-    //If the timer is running and isn't already paused
     if(_started && !_paused) {
-        //Pause the timer
         _paused = true;
 
         //Calculate the paused ticks
@@ -48,9 +38,7 @@ void Timer::pause() {
 }
 
 void Timer::unpause() {
-    //If the timer is running and paused
     if(_started && _paused) {
-        //Unpause the timer
         _paused = false;
 
         //Reset the starting ticks
@@ -62,12 +50,9 @@ void Timer::unpause() {
 }
 
 std::size_t Timer::getTicks() {
-	//The actual timer time
 	std::size_t time = 0;
 
-    //If the timer is running
     if(_started) {
-        //If the timer is paused
         if(_paused) {
             //Return the number of ticks when the timer was paused
             time = _pausedTicks;
@@ -81,12 +66,9 @@ std::size_t Timer::getTicks() {
 }
 
 bool Timer::isStarted() {
-	//Timer is running and paused or unpaused
     return _started;
 }
 
-bool Timer::isPaused()
-{
-	//Timer is running and paused
+bool Timer::isPaused() {
     return _paused && _started;
 }

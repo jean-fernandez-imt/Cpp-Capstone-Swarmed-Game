@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "parameters.h"
 #include "game.h"
 
 Game::Game(
@@ -32,7 +33,7 @@ void Game::run() {
 void Game::input(SDL_Event* e, bool* running) {
   //Handle events on queue
   while(SDL_PollEvent(e) != 0) {
-    //User requests quit
+    //User requests "Quit" or out of HP
     if( e->type == SDL_QUIT || _spaceship->getHP() <= 0) {
       *running = false;
     }
@@ -45,13 +46,11 @@ void Game::input(SDL_Event* e, bool* running) {
 }
 
 void Game::update(Timer* stepTimer) {
-  //Calculate time step
+  //Calculate time step (currently using VSync)
   float timeStep = stepTimer->getTicks() / static_cast<float>(1000);
 
-  //Move the player
+  //Player's motion control
   _spaceship->move(timeStep);
-
-  //Rotate the player
   _spaceship->updateAngle(_mark->getPosition());
 
   //Update the Gun's position and state
@@ -61,18 +60,14 @@ void Game::update(Timer* stepTimer) {
   _enemyArmy->move(timeStep);
   _enemyArmy->updateEnemies();
 
-  //Update Collisions
   updateCollisions();
 
-  //Update the screen
   _renderer->UpdateWindowTitle(_score, _spaceship->getHP());
 
-  //Restart step timer
   stepTimer->start();
 }
 
 void Game::render() {
-  //Clear screen
   SDL_RenderClear(_renderer->getRenderer());
 
   //Render objects
@@ -81,7 +76,6 @@ void Game::render() {
   _spaceshipGun->render();
   _enemyArmy->render();
 
-  //Update screen
   SDL_RenderPresent(_renderer->getRenderer());
 }
 
@@ -105,7 +99,7 @@ void Game::updateCollisions() {
   //Enemies vs Player
   for (auto enemy: enemies) {
     if (checkCollision(enemy->getCollider(), _spaceship->getCollider())) {
-      if (_afterHitTimer.getTicks() >= 200) {
+      if (_afterHitTimer.getTicks() >= GAME_INVINCIBILITY_TIME) {
         _afterHitTimer.start();
         enemy->takeHit();
         _spaceship->takeHit();
@@ -119,13 +113,13 @@ bool Game::checkCollision(Collider& a, Collider& b) {
 	int totalRadiusSquared = a.r + b.r;
 	totalRadiusSquared = totalRadiusSquared*totalRadiusSquared;
 
-  //If the distance between the centers of the circles is less than the sum of their radii
+  /* Collision: If the distance between the centers of 
+  the circles is less than the sum of their radii */
   if(distanceSquared(a.x, a.y, b.x, b.y) < (totalRadiusSquared)){
       //The circles have collided
       return true;
   }
 
-  //If not
   return false;
 }
 

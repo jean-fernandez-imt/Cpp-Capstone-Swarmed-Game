@@ -6,14 +6,12 @@
 
 #include <string>
 
-//Texture wrapper class
+//Wrapper class for SDL_Texture objects
 class Texture {
 
 	public:
-		//Initializes variables
 		Texture(SDL_Renderer* renderer);
 
-		//Deallocates memory
 		~Texture();
 
 		//Applying Rule of 5
@@ -22,10 +20,8 @@ class Texture {
 		Texture(Texture &&source);
 		Texture &operator=(Texture &&source);
 
-		//Loads image at specified path
 		void loadFromFile(std::string path);
 
-		//Renders texture at given point
 		void render(
             int x, 
             int y, 

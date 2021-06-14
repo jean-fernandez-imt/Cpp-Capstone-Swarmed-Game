@@ -6,69 +6,55 @@
 #include "texture.h"
 #include "collider.h"
 
+//The Main Player
 class Player {
     public:
-		//Initializes the variables
 		Player(
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
             Texture texture);
 
-		//Takes key presses and adjusts the player's velocity
+		//Handles keyboard event
 		void handleEvent(SDL_Event& e);
 		
 		//Rotates the player
 		void updateAngle(SDL_Point aimPos);
 
-		//Moves the player
 		void move(float timeStep);
 
-		//Shows the player on the screen
 		void render();
 
-		//Get the position of the player
 		int getPosX();
 		int getPosY();
 
-		//Get the angle of the player
 		double getAngle();
 
-		//Get the player's remaining HP
 		int getHP();
 
-		//Get collider for check
 		Collider& getCollider();
 
 		//In case of collision
 		void takeHit();
 
     private:
-        //Screen size references
         const std::size_t _screenWidth;
 		const std::size_t _screenHeight;
 
-        //Designated texture
         Texture _texture;
 
-        //The dimensions of the player
 		const std::size_t _width;
 		const std::size_t _height;
 
-		//Maximum axis velocity of the player
 		const std::size_t _vel;
 		
-        //The X and Y offsets of the player
 		int _posX; 
         int _posY;
 
-		//The angle of the player respect aim
 		double _angle;
 
-		//The velocity of the player
 		int _velX;
         int _velY;
 
-		//Hit Points
 		int _hp;
 
 		//Collider control

@@ -1,15 +1,16 @@
 #include <cmath>
 
+#include "parameters.h"
 #include "enemy.h"
 
 Enemy::Enemy(
     std::tuple<int, int> spawningPos,
     Texture* texture)
     : _texture(texture),
-      _health(1),
-      _width(50),
-      _height(50),
-      _vel(240),
+      _health(ENEMY_HEALTH),
+      _width(ENEMY_WIDTH),
+      _height(ENEMY_HEIGHT),
+      _vel(ENEMY_VELOCITY),
       _posX(std::get<0>(spawningPos)),
       _posY(std::get<1>(spawningPos)),
       _direction(0),
@@ -21,7 +22,7 @@ Enemy::Enemy(
       }
 
 void Enemy::updateSpeed(int targetX, int targetY) {
-    //Redirect the enemy to the target
+    //Redirects the enemy to the target
     if (targetX == _posX) {
         if (targetY >= _posY) {
             _direction = 180;
@@ -36,23 +37,21 @@ void Enemy::updateSpeed(int targetX, int targetY) {
             + 90;
     }
 
-    //Update speed
+    //Update velocity components
     _velX = (sin(_direction*M_PI/180.0))*_vel;
     _velY = -(cos(_direction*M_PI/180.0))*_vel;
 }
 
 void Enemy::move(float timeStep) {
-    //Move the enemy left or right
     _posX += _velX*timeStep;
-    //Move the enemy up or down
     _posY += _velY*timeStep;
 
     shiftCollider();
 }
 
 void Enemy::render() {
-    //Show the enemy if it is still alive
-    if (_health >= 1) {
+    //Shows the enemy if it is still alive
+    if (_health > 0) {
     	_texture->render(_posX - _width/2, _posY - _height/2, NULL, _direction);
     }
 }

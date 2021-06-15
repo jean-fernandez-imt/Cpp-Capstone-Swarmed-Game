@@ -12,6 +12,9 @@ The Capstone Project represents a chance to integrate what we've learned through
 
 As a final thought, I just would like to add that I had a great time building this project. Even when it is still far away to be a complete game, I really hope you enjoy it. 
 
+## How to Play
+Control the position of your spaceship with the "W", "A", "S", "D" keys, and fire with the Mouse Left Click. You count with unlimited ammo, so shoot until your heart is content!
+
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)

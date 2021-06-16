@@ -20,7 +20,7 @@ Gun::Gun(
 
 void Gun::handleEvent(SDL_Event& e) {
 	if(e.type == SDL_MOUSEBUTTONDOWN) {
-        Bullet* newBullet = 
+        _bullets.emplace_back(
             new Bullet(
                 _screenWidth,
                 _screenHeight,
@@ -29,8 +29,7 @@ void Gun::handleEvent(SDL_Event& e) {
                 _y,
                 _dx,
                 _dy,
-                _speed);
-        _bullets.push_back(newBullet);
+                _speed));
 	}
 }
 

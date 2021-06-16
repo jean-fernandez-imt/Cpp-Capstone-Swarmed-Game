@@ -48,8 +48,7 @@ void Army::spawn() {
 
     if (_spawnTimer.getTicks() >= ARMY_SPAWN_COOLDOWN_TIME) {
         _spawnTimer.start();
-        Enemy* newEnemy = new Enemy(_spawnPoints[randomPos], &_texture);
-        _enemies.push_back(newEnemy);
+        _enemies.emplace_back(new Enemy(_spawnPoints[randomPos], &_texture));
         std::cout << "Enemy Spawned!" << std::endl;
     }
 }

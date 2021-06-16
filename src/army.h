@@ -18,7 +18,12 @@ class Army {
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
             Player* target,
-            Texture texture);
+            Texture texture1,
+            Texture texture2,
+            Texture texture3,
+            Texture texture4,
+            Texture texture5,
+            Texture texture6);
 
         void spawn();
 
@@ -39,7 +44,16 @@ class Army {
         //Target player
         Player* _target;
 
-        Texture _texture;
+        //Different Enemies Textures
+        Texture _texture1;
+        Texture _texture2;
+        Texture _texture3;
+        Texture _texture4;
+        Texture _texture5;
+        Texture _texture6;
+
+        //For random texture Enemy Spawning
+        std::deque<Texture*> _textures;
 
 		//Spawning control
 		Timer _spawnTimer;

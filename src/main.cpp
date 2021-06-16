@@ -22,13 +22,23 @@ int main(int argc, char* args[]) {
   Texture markTexture(rendererPtr);
   Texture spaceshipTexture(rendererPtr);
   Texture bulletTexture(rendererPtr);
-  Texture enemyArmyTexture(rendererPtr);
+  Texture enemyArmyTexture1(rendererPtr);
+  Texture enemyArmyTexture2(rendererPtr);
+  Texture enemyArmyTexture3(rendererPtr);
+  Texture enemyArmyTexture4(rendererPtr);
+  Texture enemyArmyTexture5(rendererPtr);
+  Texture enemyArmyTexture6(rendererPtr);
 
   //Load SDL_Texture from files
   markTexture.loadFromFile("../textures/aim.png");
   spaceshipTexture.loadFromFile("../textures/spaceship.png");
   bulletTexture.loadFromFile("../textures/bullet.png");
-  enemyArmyTexture.loadFromFile("../textures/enemy.png");
+  enemyArmyTexture1.loadFromFile("../textures/enemy1.png");
+  enemyArmyTexture2.loadFromFile("../textures/enemy2.png");
+  enemyArmyTexture3.loadFromFile("../textures/enemy3.png");
+  enemyArmyTexture4.loadFromFile("../textures/enemy4.png");
+  enemyArmyTexture5.loadFromFile("../textures/enemy5.png");
+  enemyArmyTexture6.loadFromFile("../textures/enemy6.png");
 
   Aim mark(std::move(markTexture));
 
@@ -48,7 +58,12 @@ int main(int argc, char* args[]) {
     kScreenWidth, 
     kScreenHeight,
     &spaceship,
-    std::move(enemyArmyTexture));
+    std::move(enemyArmyTexture1),
+    std::move(enemyArmyTexture2),
+    std::move(enemyArmyTexture3),
+    std::move(enemyArmyTexture4),
+    std::move(enemyArmyTexture5),
+    std::move(enemyArmyTexture6));
   
   Game swarmed(
     &renderer, 

@@ -8,11 +8,21 @@ Army::Army(
     const std::size_t screenWidth, 
     const std::size_t screenHeight,
     Player* target,
-    Texture texture)
+    Texture texture1,
+    Texture texture2,
+    Texture texture3,
+    Texture texture4,
+    Texture texture5,
+    Texture texture6)
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
       _target(target),
-      _texture(std::move(texture)) {
+      _texture1(std::move(texture1)),
+      _texture2(std::move(texture2)),
+      _texture3(std::move(texture3)),
+      _texture4(std::move(texture4)),
+      _texture5(std::move(texture5)),
+      _texture6(std::move(texture6)) {
           //Spawn enemies from 4 different positions
           std::tuple<int, int> pos1;
           std::tuple<int, int> pos2;
@@ -37,6 +47,14 @@ Army::Army(
           _spawnPoints.push_back(pos3);
           _spawnPoints.push_back(pos4);
 
+          //Store pointers to textures
+          _textures.push_back(&_texture1);
+          _textures.push_back(&_texture2);
+          _textures.push_back(&_texture3);
+          _textures.push_back(&_texture4);
+          _textures.push_back(&_texture5);
+          _textures.push_back(&_texture6);
+
           //Start spawning cooldown timer
           _spawnTimer.start();
       }
@@ -48,7 +66,11 @@ void Army::spawn() {
 
     if (_spawnTimer.getTicks() >= ARMY_SPAWN_COOLDOWN_TIME) {
         _spawnTimer.start();
-        _enemies.emplace_back(new Enemy(_spawnPoints[randomPos], &_texture));
+        //Choose a random Enemy Texture
+        std::uniform_int_distribution<int> distribution(0, 5);
+        int randomTexture = distribution(_generator);
+        _enemies.emplace_back(
+            new Enemy(_spawnPoints[randomPos], _textures[randomTexture]));
         std::cout << "Enemy Spawned!" << std::endl;
     }
 }

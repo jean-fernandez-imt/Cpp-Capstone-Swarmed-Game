@@ -9,13 +9,16 @@ Game::Game(
   Player* spaceship,
   Gun* spaceshipGun,
   Army* enemyArmy,
-  Texture background)
+  Background* background)
     : _renderer(renderer),
       _mark(mark),
       _spaceship(spaceship),
       _spaceshipGun(spaceshipGun),
       _enemyArmy(enemyArmy),
-      _background(std::move(background)) {
+      _background(background) {
+        //Select random Background
+        _selectedBackground = _background->getRandomBackgound();
+
         //Start invulnerability Timer
         _afterHitTimer.start();
       }
@@ -72,7 +75,8 @@ void Game::update(Timer* stepTimer) {
 void Game::render() {
   SDL_RenderClear(_renderer->getRenderer());
 
-  _background.render(0, 0);
+  //Render Background
+  _selectedBackground->render(0, 0);
 
   //Render objects
   _mark->render();

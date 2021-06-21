@@ -19,7 +19,8 @@ add_executable(
     src/enemy.cpp
     src/bullet.cpp 
     src/timer.cpp
-    src/game.cpp)
+    src/game.cpp
+    src/background.cpp)
 
 INCLUDE(FindPkgConfig)
 

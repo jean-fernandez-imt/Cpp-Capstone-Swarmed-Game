@@ -42,6 +42,11 @@ Control the position of your spaceship with the "W", "A", "S", "D" keys, and fir
 * OpenGameArt.org: Gumichan01 - [Bullet](https://opengameart.org/content/tx-bullet-0) texture.
 * OpenGameArt.org: Tummyache - [Spaceship](https://opengameart.org/content/purple-space-ship) texture.
 * OpenGameArt.org: Redshrike - [Enemy](https://opengameart.org/content/space-ship-building-bits-volume-1) textures.
+* OpenGameArt.org: Cuzco - [Space Background 1](https://opengameart.org/content/space-background) texture.
+* OpenGameArt.org: leyren - [Space Background 2](https://opengameart.org/content/starsspace-background) texture.
+* OpenGameArt.org: Scribe - [Space Background 3](https://opengameart.org/content/2d-space-background) texture.
+* OpenGameArt.org: StumpyStrust - [Space Background 4](https://opengameart.org/content/space-background-2) texture.
+* OpenGameArt.org: Westbeam - [Space Background 5](https://opengameart.org/content/space-background-1) texture.
 
 * LazyFooProductions: [SDL Tutorials](https://lazyfoo.net/tutorials/SDL/index.php)
 * ParallelRealities: [SDL2 Game Tutorials](https://www.parallelrealities.co.uk/tutorials/)

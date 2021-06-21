@@ -10,6 +10,7 @@
 #include "gun.h"
 #include "army.h"
 #include "game.h"
+#include "background.h"
 
 int main(int argc, char* args[]) {
   constexpr std::size_t kScreenWidth{MAIN_SCREEN_WIDTH};
@@ -79,6 +80,13 @@ int main(int argc, char* args[]) {
     std::move(enemyArmyTexture4),
     std::move(enemyArmyTexture5),
     std::move(enemyArmyTexture6));
+
+  Background background(
+    std::move(backgroundTexture1),
+    std::move(backgroundTexture2),
+    std::move(backgroundTexture3),
+    std::move(backgroundTexture4),
+    std::move(backgroundTexture5));
   
   Game swarmed(
     &renderer, 
@@ -86,7 +94,7 @@ int main(int argc, char* args[]) {
     &spaceship,
     &spaceshipGun,
     &enemyArmy,
-    std::move(backgroundTexture5));
+    &background);
 
   swarmed.run();
 

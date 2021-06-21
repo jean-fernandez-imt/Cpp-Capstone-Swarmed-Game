@@ -8,7 +8,6 @@
 
 //Wrapper class for SDL_Texture objects
 class Texture {
-
 	public:
 		Texture(SDL_Renderer* renderer);
 

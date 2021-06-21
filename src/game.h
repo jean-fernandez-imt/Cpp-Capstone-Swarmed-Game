@@ -11,6 +11,7 @@
 #include "army.h"
 #include "timer.h"
 #include "collider.h"
+#include "background.h"
 
 //Controls the Game Mechanics
 class Game {
@@ -21,7 +22,7 @@ class Game {
       Player* spaceship,
       Gun* spaceshipGun,
       Army* enemyArmy,
-      Texture background);
+      Background* background);
       
     void run();
     int getScore();
@@ -49,7 +50,8 @@ class Game {
     double distanceSquared(int x1, int y1, int x2, int y2);
 
     //Backgrounds
-    Texture _background;
+    Background* _background;
+    Texture* _selectedBackground;
 };
 
 #endif

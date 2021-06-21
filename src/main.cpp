@@ -22,6 +22,7 @@ int main(int argc, char* args[]) {
   Texture markTexture(rendererPtr);
   Texture spaceshipTexture(rendererPtr);
   Texture bulletTexture(rendererPtr);
+
   Texture enemyArmyTexture1(rendererPtr);
   Texture enemyArmyTexture2(rendererPtr);
   Texture enemyArmyTexture3(rendererPtr);
@@ -29,16 +30,30 @@ int main(int argc, char* args[]) {
   Texture enemyArmyTexture5(rendererPtr);
   Texture enemyArmyTexture6(rendererPtr);
 
+  Texture backgroundTexture1(rendererPtr);
+  Texture backgroundTexture2(rendererPtr);
+  Texture backgroundTexture3(rendererPtr);
+  Texture backgroundTexture4(rendererPtr);
+  Texture backgroundTexture5(rendererPtr);
+            
+
   //Load SDL_Texture from files
   markTexture.loadFromFile("../textures/aim.png");
   spaceshipTexture.loadFromFile("../textures/spaceship.png");
   bulletTexture.loadFromFile("../textures/bullet.png");
+
   enemyArmyTexture1.loadFromFile("../textures/enemy1.png");
   enemyArmyTexture2.loadFromFile("../textures/enemy2.png");
   enemyArmyTexture3.loadFromFile("../textures/enemy3.png");
   enemyArmyTexture4.loadFromFile("../textures/enemy4.png");
   enemyArmyTexture5.loadFromFile("../textures/enemy5.png");
   enemyArmyTexture6.loadFromFile("../textures/enemy6.png");
+
+  backgroundTexture1.loadFromFile("../textures/space1.png");
+  backgroundTexture2.loadFromFile("../textures/space2.png");
+  backgroundTexture3.loadFromFile("../textures/space3.png");
+  backgroundTexture4.loadFromFile("../textures/space4.png");
+  backgroundTexture5.loadFromFile("../textures/space5.png");
 
   Aim mark(std::move(markTexture));
 
@@ -70,7 +85,8 @@ int main(int argc, char* args[]) {
     &mark,
     &spaceship,
     &spaceshipGun,
-    &enemyArmy);
+    &enemyArmy,
+    std::move(backgroundTexture5));
 
   swarmed.run();
 

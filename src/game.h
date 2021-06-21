@@ -20,7 +20,8 @@ class Game {
       Aim* mark, 
       Player* spaceship,
       Gun* spaceshipGun,
-      Army* enemyArmy);
+      Army* enemyArmy,
+      Texture background);
       
     void run();
     int getScore();
@@ -46,6 +47,9 @@ class Game {
     void updateCollisions();
     bool checkCollision(Collider& a, Collider& b);
     double distanceSquared(int x1, int y1, int x2, int y2);
+
+    //Backgrounds
+    Texture _background;
 };
 
 #endif

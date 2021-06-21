@@ -8,12 +8,14 @@ Game::Game(
   Aim* mark, 
   Player* spaceship,
   Gun* spaceshipGun,
-  Army* enemyArmy)
+  Army* enemyArmy,
+  Texture background)
     : _renderer(renderer),
       _mark(mark),
       _spaceship(spaceship),
       _spaceshipGun(spaceshipGun),
-      _enemyArmy(enemyArmy) {
+      _enemyArmy(enemyArmy),
+      _background(std::move(background)) {
         //Start invulnerability Timer
         _afterHitTimer.start();
       }
@@ -69,6 +71,8 @@ void Game::update(Timer* stepTimer) {
 
 void Game::render() {
   SDL_RenderClear(_renderer->getRenderer());
+
+  _background.render(0, 0);
 
   //Render objects
   _mark->render();

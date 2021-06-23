@@ -46,8 +46,9 @@ void Game::input(SDL_Event* e, bool* running) {
     _mark->handleEvent(*e);
     _spaceship->handleEvent(*e);
     _spaceshipGun->handleEvent(*e);
-    _enemyArmy->spawn();
   }
+
+  _enemyArmy->spawn();
 }
 
 void Game::update(Timer* stepTimer) {

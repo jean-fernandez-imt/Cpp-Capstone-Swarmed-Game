@@ -44,8 +44,9 @@ class Font {
 		std::size_t _width;
 		std::size_t _height;
 
-		//Deallocates texture
-		void release();
+		//Deallocates elements
+		void releaseTexture();
+        void releaseFont();
 };
 
 #endif

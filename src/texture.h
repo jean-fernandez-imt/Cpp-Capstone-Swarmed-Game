@@ -42,7 +42,7 @@ class Texture {
 		std::size_t _height;
 
 		//Deallocates texture
-		void release();
+		void releaseTexture();
 };
 
 #endif

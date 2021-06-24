@@ -24,7 +24,9 @@ Font::Font(SDL_Renderer* renderer, std::string path, int size)
 }
 
 Font::~Font() {
-	release();
+	//Renderer shall be released only at the end
+	releaseTexture();
+	releaseFont();
 }
 
 //Copy constructor
@@ -83,26 +85,28 @@ Font &Font::operator=(Font &&source) {
 	source._height = 0;
 }
 
-void Font::release() {
-    //Free font if it exists
-    if (_font != NULL) {
-        TTF_CloseFont(_font);
-	    _font = NULL;
-    }
-
+void Font::releaseTexture() {
 	//Free texture if it exists
 	if (_texture != NULL) {
 		SDL_DestroyTexture(_texture);
 		_texture = NULL;
-        _renderer = NULL;
         _width = 0;
         _height = 0;
 	}
 }
 
+void Font::releaseFont() {
+    //Free font if it exists
+    if (_font != NULL) {
+        TTF_CloseFont(_font);
+	    _font = NULL;
+		_renderer = NULL;
+    }
+}
+
 void Font::loadFromRenderedText(std::string text, SDL_Color color) {
 	//Get rid of preexisting texture
-	release();
+	releaseTexture();
 
 	//Render text surface
 	SDL_Surface* textSurface = 

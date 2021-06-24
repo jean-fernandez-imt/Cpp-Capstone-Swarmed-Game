@@ -9,7 +9,9 @@ Texture::Texture(SDL_Renderer* renderer): _renderer(renderer) {
 }
 
 Texture::~Texture() {
-	release();
+	//Renderer shall be released only at the end
+	releaseTexture();
+	_renderer = NULL;
 }
 
 //Copy constructor
@@ -62,12 +64,11 @@ Texture &Texture::operator=(Texture &&source) {
 	source._height = 0;
 }
 
-void Texture::release() {
+void Texture::releaseTexture() {
 	//Free texture if it exists
 	if (_texture != NULL) {
 		SDL_DestroyTexture(_texture);
 		_texture = NULL;
-        _renderer = NULL;
 		_width = 0;
 		_height = 0;
 	}
@@ -75,7 +76,7 @@ void Texture::release() {
 
 void Texture::loadFromFile(std::string path) {
 	//Get rid of preexisting texture
-	release();
+	releaseTexture();
 
 	//The final texture
 	SDL_Texture* newTexture = NULL;

@@ -105,7 +105,8 @@ int main(int argc, char* args[]) {
     &spaceship,
     &spaceshipGun,
     &enemyArmy,
-    &background);
+    &background,
+    &titleFont);
 
   swarmed.run();
 

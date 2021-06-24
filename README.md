@@ -36,7 +36,7 @@ Control the position of your spaceship with the "W", "A", "S", "D" keys, and fir
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./Swarmed`.
-**Note:** If you happen to run this program with a Ubuntu distribution on a Jetson Nano or similar NVIDIA Jetson series products, the SDL2 library and extensions installed with `sudo apt install` might find some conflict with the D-BUS middleware when running after building. In order to work around this, you might need to download and build the libraries from source, or run the program with: `DBUS_FATAL_WARNINGS=0 ./Swarmed`
+>**Note:** If you happen to run this program with a Ubuntu distribution on a Jetson Nano or similar NVIDIA Jetson series products, the SDL2 library and extensions installed with `sudo apt install` might find some conflict with the D-BUS middleware when running after building. In order to work around this, you might need to download and build the libraries from source, or run the program with: `DBUS_FATAL_WARNINGS=0 ./Swarmed`
 
 ## Special Thanks
 * OpenGameArt.org: oglsdl - [Scope](https://opengameart.org/content/aim) texture.

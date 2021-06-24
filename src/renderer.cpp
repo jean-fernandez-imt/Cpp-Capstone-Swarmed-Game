@@ -53,9 +53,15 @@ Renderer::Renderer(
 
   //Initialize PNG loading
   int imgFlags = IMG_INIT_PNG;
-  if(!(IMG_Init( imgFlags ) & imgFlags)) {
+  if (!(IMG_Init(imgFlags) & imgFlags)) {
     std::cerr << "SDL2_image could not initialize." << std::endl;
-    std::cerr << "SDL2_Error: " << IMG_GetError() << std::endl;
+    std::cerr << "SDL2_IMG_Error: " << IMG_GetError() << std::endl;
+  }
+
+  //Initialize SDL_TTF
+  if (TTF_Init() == -1) {
+    std::cerr << "SDL2_ttf could not initialize." << std::endl;
+    std::cerr << "SDL2_TTF_Error: " << TTF_GetError() << std::endl;
   }
 }
 
@@ -63,6 +69,7 @@ Renderer::Renderer(
 Renderer::~Renderer() {
   SDL_DestroyRenderer(sdl_renderer);
   SDL_DestroyWindow(sdl_window);
+  TTF_Quit();
   IMG_Quit();
   SDL_Quit();
 }

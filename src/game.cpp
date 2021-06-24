@@ -36,10 +36,15 @@ void Game::run() {
 }
 
 void Game::input(SDL_Event* e, bool* running) {
+  //Out of HP: Game Over
+  if (_spaceship->getHP() <= 0) {
+    *running = false;
+  }
+  
   //Handle events on queue
   while(SDL_PollEvent(e) != 0) {
     //User requests "Quit" or out of HP
-    if( e->type == SDL_QUIT || _spaceship->getHP() <= 0) {
+    if( e->type == SDL_QUIT) {
       *running = false;
     }
     //Handle inputs

@@ -35,5 +35,7 @@
 /* main.cpp file */
 #define MAIN_SCREEN_WIDTH           1280
 #define MAIN_SCREEN_HEIGHT          720
+#define MAIN_TITLE_FONT_SIZE        25
+#define MAIN_HIGHSCORES_FONT_SIZE   14
 
 #endif

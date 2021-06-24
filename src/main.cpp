@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL_ttf.h>
 #include <iostream>
 
 #include "parameters.h"
@@ -11,6 +12,7 @@
 #include "army.h"
 #include "game.h"
 #include "background.h"
+#include "font.h"
 
 int main(int argc, char* args[]) {
   constexpr std::size_t kScreenWidth{MAIN_SCREEN_WIDTH};
@@ -19,7 +21,7 @@ int main(int argc, char* args[]) {
   Renderer renderer(kScreenWidth, kScreenHeight);
   SDL_Renderer* rendererPtr = renderer.getRenderer();
 
-  // Prepare Texture objects
+  //Prepare Texture objects
   Texture markTexture(rendererPtr);
   Texture spaceshipTexture(rendererPtr);
   Texture bulletTexture(rendererPtr);
@@ -36,7 +38,6 @@ int main(int argc, char* args[]) {
   Texture backgroundTexture3(rendererPtr);
   Texture backgroundTexture4(rendererPtr);
   Texture backgroundTexture5(rendererPtr);
-            
 
   //Load SDL_Texture from files
   markTexture.loadFromFile("../textures/aim.png");
@@ -55,6 +56,16 @@ int main(int argc, char* args[]) {
   backgroundTexture3.loadFromFile("../textures/space3.png");
   backgroundTexture4.loadFromFile("../textures/space4.png");
   backgroundTexture5.loadFromFile("../textures/space5.png");
+
+  //Prepare Fonts
+  Font titleFont(
+    rendererPtr, 
+    "../fonts/space-mavericks/SpaceMavericks-qZo91.ttf",
+    MAIN_TITLE_FONT_SIZE);
+  Font highscoresFont(
+    rendererPtr,
+    "../fonts/press-start-2p/PressStart2P.ttf",
+    MAIN_HIGHSCORES_FONT_SIZE);
 
   Aim mark(std::move(markTexture));
 

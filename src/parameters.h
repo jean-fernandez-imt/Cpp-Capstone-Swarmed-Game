@@ -32,6 +32,10 @@
 #define PLAYER_VELOCITY             320
 #define PLAYER_HP                   5
 
+/* Highscores Class */
+#define HIGHSCORES_NAME_MAX_LENGTH  10
+#define HIGHSCORES_TOTAL            10
+
 /* main.cpp file */
 #define MAIN_SCREEN_WIDTH           1280
 #define MAIN_SCREEN_HEIGHT          720

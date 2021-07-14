@@ -31,7 +31,7 @@ void Game::run() {
 
   //Test
   SDL_Color color = {235, 182, 38};
-  _testFont->loadFromRenderedText("Swarmed", color);
+  // _testFont->loadFromRenderedText("Swarmed", color);
 
   while (running) {
     //Main Game Loop
@@ -97,7 +97,7 @@ void Game::render() {
   _enemyArmy->render();
 
   //Test
-  _testFont->render(10, 10);
+  // _testFont->render(10, 10);
 
   SDL_RenderPresent(_renderer->getRenderer());
 }

@@ -59,11 +59,9 @@ int main(int argc, char* args[]) {
 
   //Prepare Fonts
   Font titleFont(
-    rendererPtr, 
     "../fonts/space-mavericks/SpaceMavericks-qZo91.ttf",
     MAIN_TITLE_FONT_SIZE);
   Font highscoresFont(
-    rendererPtr,
     "../fonts/press-start-2p/PressStart2P.ttf",
     MAIN_HIGHSCORES_FONT_SIZE);
 

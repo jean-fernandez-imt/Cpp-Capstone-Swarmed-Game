@@ -14,8 +14,7 @@ class Bullet {
             int x,
             int y,
             double dx,
-            double dy,
-            double speed);
+            double dy);
 
         void fire();
 

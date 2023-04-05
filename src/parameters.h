@@ -13,6 +13,7 @@
 #define BULLET_WIDTH                10
 #define BULLET_HEIGHT               10
 #define BULLET_HEALTH               1
+#define BULLET_SPEED                5.0
 
 /* Enemy Class */
 #define ENEMY_HEALTH                1
@@ -22,9 +23,6 @@
 
 /* Game Class */
 #define GAME_INVINCIBILITY_TIME     400
-
-/* Gun Class */
-#define GUN_BULLET_SPEED            10.0
 
 /* Player Class */
 #define PLAYER_WIDTH                80

@@ -10,8 +10,7 @@ Bullet::Bullet(
     int x,
     int y,
     double dx,
-    double dy,
-    double speed)
+    double dy)
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
       _texture(texture),
@@ -21,7 +20,7 @@ Bullet::Bullet(
       _y(y),
       _dx(dx),
       _dy(dy),
-      _speed(speed),
+      _speed(BULLET_SPEED),
       _health(BULLET_HEALTH) {
           _collider.r = _width/2;
           _collider.x = _x;

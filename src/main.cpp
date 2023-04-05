@@ -65,8 +65,6 @@ int main(int argc, char* args[]) {
     "../fonts/press-start-2p/PressStart2P.ttf",
     MAIN_HIGHSCORES_FONT_SIZE);
 
-  Aim mark(std::move(markTexture));
-
   //Create Game elements
   Player spaceship(
     kScreenWidth, 
@@ -78,6 +76,8 @@ int main(int argc, char* args[]) {
     kScreenHeight,
     std::move(bulletTexture),
     &spaceship);
+
+  Aim mark(std::move(markTexture));
 
   Army enemyArmy(
     kScreenWidth, 

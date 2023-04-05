@@ -39,7 +39,6 @@ class Gun {
         int _y;
         double _dx;
         double _dy;
-        double _speed;
 
         void updateTarget();
         void clearBullets();

@@ -44,12 +44,18 @@ void Player::handleEvent(SDL_Event& e) {
 }
 
 void Player::updateAngle(SDL_Point aimPos) {
-    //Make a steadier aim
+    //Make a steadier angle
     if (aimPos.x == _posX) {
         if (aimPos.y >= _posY) {
             _angle = 180;
         } else if (aimPos.y < _posY) {
             _angle = 0;
+        }
+    } else if (aimPos.y == _posY) {
+        if (aimPos.x >= _posX) {
+            _angle = 90;
+        } else if (aimPos.x < _posX) {
+            _angle = 270;
         }
     } else {
         _angle = 

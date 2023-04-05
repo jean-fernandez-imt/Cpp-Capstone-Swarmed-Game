@@ -15,8 +15,7 @@ Gun::Gun(
         _x(0),
         _y(0),
         _dx(0.0),
-        _dy(0.0),
-        _speed(GUN_BULLET_SPEED) {}
+        _dy(0.0) {}
 
 void Gun::handleEvent(SDL_Event& e) {
 	if(e.type == SDL_MOUSEBUTTONDOWN) {
@@ -28,8 +27,7 @@ void Gun::handleEvent(SDL_Event& e) {
                 _x,
                 _y,
                 _dx,
-                _dy,
-                _speed));
+                _dy));
 	}
 }
 
@@ -41,8 +39,8 @@ void Gun::updateGun() {
 }
 
 void Gun::updateTarget() {
-    _dx = (sin((_player->getAngle())*M_PI/180.0))*_speed;
-    _dy = -(cos((_player->getAngle())*M_PI/180.0))*_speed;
+    _dx = (sin((_player->getAngle())*M_PI/180.0));
+    _dy = -(cos((_player->getAngle())*M_PI/180.0));
 }
 
 void Gun::clearBullets() {

@@ -16,7 +16,8 @@ class Bullet {
             double dx,
             double dy);
 
-        void fire();
+        void update(float timeStep);
+        void render();
 
         int getHealth();
 
@@ -38,14 +39,18 @@ class Bullet {
         //Borrowed from Gun
         Texture* _texture;
 
-        int _width;
-        int _height;
+        const std::size_t _width;
+		const std::size_t _height;
+
+		const std::size_t _speed;
 
         int _x;
         int _y;
+
+        double _angle;
+
         double _dx;
         double _dy;
-        double _speed;
         int _health;
 
         //Collider control

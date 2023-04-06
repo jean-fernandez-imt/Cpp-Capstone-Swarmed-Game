@@ -12,14 +12,14 @@ Player::Player(
       _texture(std::move(texture)),
       _width(PLAYER_WIDTH),
       _height(PLAYER_HEIGHT),
-      _vel(PLAYER_VELOCITY),
-      _posX(_screenWidth/2),
-      _posY(_screenHeight/2),
-      _angle(0),
-      _velX(0),
-      _velY(0),
+      _vel(static_cast<float>(PLAYER_VELOCITY)),
+      _posX(static_cast<float>(_screenWidth/2)),
+      _posY(static_cast<float>(_screenHeight/2)),
+      _angle(0.0),
+      _velX(0.0),
+      _velY(0.0),
       _hp(PLAYER_HP) {
-          _collider.r = _width/2;
+          _collider.r = static_cast<float>(_width/2);
           _collider.x = _posX;
           _collider.y = _posY;
       }
@@ -92,11 +92,11 @@ void Player::render() {
 	_texture.render(_posX - _width/2, _posY - _height/2, NULL, _angle);
 } 
 
-int Player::getPosX() {
+float Player::getPosX() {
     return _posX;
 }
 
-int Player::getPosY() {
+float Player::getPosY() {
     return _posY;
 }
 

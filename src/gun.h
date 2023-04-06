@@ -19,7 +19,8 @@ class Gun {
         //Handles mouse event
 		void handleEvent(SDL_Event& e);
 
-        void updateGun();
+        void updateGun(SDL_Point aimPos);
+        void updateBullets(float timeStep);
 
         void render();
 
@@ -40,7 +41,6 @@ class Gun {
         double _dx;
         double _dy;
 
-        void updateTarget();
         void clearBullets();
 };
 

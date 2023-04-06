@@ -71,7 +71,8 @@ void Game::update(Timer* stepTimer) {
   _spaceship->updateAngle(_mark->getPosition());
 
   //Update the Gun's position and state
-  _spaceshipGun->updateGun();
+  _spaceshipGun->updateGun(_mark->getPosition());
+  _spaceshipGun->updateBullets(timeStep);
 
   //Update the enemy Army
   _enemyArmy->move(timeStep);

@@ -24,8 +24,8 @@ class Player {
 
 		void render();
 
-		int getPosX();
-		int getPosY();
+		float getPosX();
+		float getPosY();
 
 		double getAngle();
 
@@ -45,15 +45,15 @@ class Player {
 		const std::size_t _width;
 		const std::size_t _height;
 
-		const std::size_t _vel;
+		float _vel;
 		
-		int _posX; 
-        int _posY;
+		float _posX; 
+        float _posY;
 
 		double _angle;
 
-		int _velX;
-        int _velY;
+		float _velX;
+        float _velY;
 
 		int _hp;
 

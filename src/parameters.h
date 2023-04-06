@@ -13,13 +13,13 @@
 #define BULLET_WIDTH                10
 #define BULLET_HEIGHT               10
 #define BULLET_HEALTH               1
-#define BULLET_SPEED                5.0
+#define BULLET_SPEED                500
 
 /* Enemy Class */
 #define ENEMY_HEALTH                1
 #define ENEMY_WIDTH                 50
 #define ENEMY_HEIGHT                50
-#define ENEMY_VELOCITY              240
+#define ENEMY_VELOCITY              150
 
 /* Game Class */
 #define GAME_INVINCIBILITY_TIME     400
@@ -27,7 +27,7 @@
 /* Player Class */
 #define PLAYER_WIDTH                80
 #define PLAYER_HEIGHT               80
-#define PLAYER_VELOCITY             320
+#define PLAYER_VELOCITY             300
 #define PLAYER_HP                   5
 
 /* Highscores Class */

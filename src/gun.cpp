@@ -31,16 +31,23 @@ void Gun::handleEvent(SDL_Event& e) {
 	}
 }
 
-void Gun::updateGun() {
+void Gun::updateGun(SDL_Point aimPos) {
     _x = _player->getPosX();
     _y = _player->getPosY();
-    updateTarget();
+
+    _dx = aimPos.x - _x;
+    _dy = aimPos.y - _y;
+
     clearBullets();
 }
 
-void Gun::updateTarget() {
-    _dx = (sin((_player->getAngle())*M_PI/180.0));
-    _dy = -(cos((_player->getAngle())*M_PI/180.0));
+void Gun::updateBullets(float timeStep) {
+    //Update the position of the remianing bullets
+    if (!_bullets.empty()) {
+        for (Bullet* bullet: _bullets) {
+            bullet->update(timeStep);
+        }
+    }
 }
 
 void Gun::clearBullets() {
@@ -59,7 +66,7 @@ void Gun::render() {
     //Render the remaining bullets
     if (!_bullets.empty()) {
         for (Bullet* bullet: _bullets) {
-            bullet->fire();
+            bullet->render();
         }
     }
 }

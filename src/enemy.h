@@ -26,8 +26,8 @@ class Enemy {
 		int getWidth();
 		int getHeight();
 
-		int getPosX();
-		int getPosY();
+		float getPosX();
+		float getPosY();
 
 		Collider& getCollider();
 
@@ -44,16 +44,16 @@ class Enemy {
 		const std::size_t _height;
 
 		//Vectorial velocity (for calculations)
-		const std::size_t _vel;
+		float _vel;
 		
-		int _posX; 
-        int _posY;
+		float _posX; 
+        float _posY;
 
 		double _direction;
 
 		//Components of vectorial velocity
-		int _velX;
-        int _velY;
+		float _velX;
+        float _velY;
 
 		//Collider control
 		Collider _collider;

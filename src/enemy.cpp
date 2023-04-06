@@ -10,13 +10,13 @@ Enemy::Enemy(
       _health(ENEMY_HEALTH),
       _width(ENEMY_WIDTH),
       _height(ENEMY_HEIGHT),
-      _vel(ENEMY_VELOCITY),
+      _vel(static_cast<float>(ENEMY_VELOCITY)),
       _posX(std::get<0>(spawningPos)),
       _posY(std::get<1>(spawningPos)),
-      _direction(0),
-      _velX(0),
-      _velY(0) {
-          _collider.r = _width/2;
+      _direction(0.0),
+      _velX(0.0),
+      _velY(0.0) {
+          _collider.r = static_cast<float>(_width/2);
           _collider.x = _posX;
           _collider.y = _posY;
       }
@@ -25,16 +25,22 @@ void Enemy::updateSpeed(int targetX, int targetY) {
     //Redirects the enemy to the target
     if (targetX == _posX) {
         if (targetY >= _posY) {
-            _direction = 180;
+            _direction = 180.0;
         } else if (targetY < _posY) {
-            _direction = 0;
+            _direction = 0.0;
+        }
+    } else if (targetY == _posY) {
+        if (targetX >= _posX) {
+            _direction = 90.0;
+        } else if (targetX < _posX) {
+            _direction = 270.0;
         }
     } else {
         _direction = 
             (atan2((targetY - _posY), (targetX - _posX))
-            *180
+            *180.0
             /M_PI)
-            + 90;
+            + 90.0;
     }
 
     //Update velocity components
@@ -68,11 +74,11 @@ int Enemy::getHeight() {
     return _height;
 }
 
-int Enemy::getPosX() {
+float Enemy::getPosX() {
     return _posX;
 }
 
-int Enemy::getPosY() {
+float Enemy::getPosY() {
     return _posY;
 }
 

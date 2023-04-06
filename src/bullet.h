@@ -11,10 +11,10 @@ class Bullet {
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
             Texture* texture,
-            float x,
-            float y,
-            float dx,
-            float dy);
+            float posX,
+            float posY,
+            float targetX,
+            float targetY);
 
         void update(float timeStep);
         void render();
@@ -44,13 +44,14 @@ class Bullet {
 
 		float _speed;
 
-        float _x;
-        float _y;
+        float _posX;
+        float _posY;
 
-        double _angle;
+        float _targetX;
+        float _targetY;
 
-        float _dx;
-        float _dy;
+        float _speedX;
+        float _speedY;
 
         int _health;
 

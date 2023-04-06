@@ -137,14 +137,14 @@ bool Game::checkCollision(Collider& a, Collider& b) {
 	int totalRadiusSquared = a.r + b.r;
 	totalRadiusSquared = totalRadiusSquared*totalRadiusSquared;
 
-  /* Collision: If the distance between the centers of 
-  the circles is less than the sum of their radii */
-  if(distanceSquared(a.x, a.y, b.x, b.y) < (totalRadiusSquared)){
-      //The circles have collided
-      return true;
-  }
+    /* Collision: If the distance between the centers of 
+    the circles is less than the sum of their radii */
+    if(distanceSquared(a.x, a.y, b.x, b.y) < (totalRadiusSquared)){
+        //The circles have collided
+        return true;
+    }
 
-  return false;
+    return false;
 }
 
 double Game::distanceSquared(int x1, int y1, int x2, int y2) {

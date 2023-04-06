@@ -47,22 +47,22 @@ void Player::updateAngle(SDL_Point aimPos) {
     //Make a steadier angle
     if (aimPos.x == _posX) {
         if (aimPos.y >= _posY) {
-            _angle = 180;
+            _angle = 180.0;
         } else if (aimPos.y < _posY) {
-            _angle = 0;
+            _angle = 0.0;
         }
     } else if (aimPos.y == _posY) {
         if (aimPos.x >= _posX) {
-            _angle = 90;
+            _angle = 90.0;
         } else if (aimPos.x < _posX) {
-            _angle = 270;
+            _angle = 270.0;
         }
     } else {
         _angle = 
             (atan2((aimPos.y - _posY), (aimPos.x - _posX))
-            *180
+            *180.0
             /M_PI)
-            + 90;
+            + 90.0;
     }
 }
 

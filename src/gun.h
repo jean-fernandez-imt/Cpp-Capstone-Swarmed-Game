@@ -36,10 +36,10 @@ class Gun {
 
         std::deque<Bullet*> _bullets;
 
-        int _x;
-        int _y;
-        double _dx;
-        double _dy;
+        float _x;
+        float _y;
+        float _dx;
+        float _dy;
 
         void clearBullets();
 };

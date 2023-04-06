@@ -8,10 +8,10 @@ Bullet::Bullet(
     const std::size_t screenWidth, 
     const std::size_t screenHeight,
     Texture* texture,
-    int x,
-    int y,
-    double dx,
-    double dy)
+    float x,
+    float y,
+    float dx,
+    float dy)
     : _screenWidth(screenWidth),
       _screenHeight(screenHeight),
       _texture(texture),
@@ -19,12 +19,12 @@ Bullet::Bullet(
       _height(BULLET_HEIGHT),
       _x(x),
       _y(y),
-      _angle(0),
+      _angle(0.0),
       _dx(dx),
       _dy(dy),
-      _speed(BULLET_SPEED),
+      _speed(static_cast<float>(BULLET_SPEED)),
       _health(BULLET_HEALTH) {
-          _collider.r = _width/2;
+          _collider.r = static_cast<float>(_width/2);
           _collider.x = _x;
           _collider.y = _y;
       }
@@ -60,11 +60,11 @@ int Bullet::getHeight() {
     return _height;
 }
 
-int Bullet::getX() {
+float Bullet::getX() {
     return _x;
 }
 
-int Bullet::getY() {
+float Bullet::getY() {
     return _y;
 }
 

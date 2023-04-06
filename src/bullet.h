@@ -11,10 +11,10 @@ class Bullet {
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
             Texture* texture,
-            int x,
-            int y,
-            double dx,
-            double dy);
+            float x,
+            float y,
+            float dx,
+            float dy);
 
         void update(float timeStep);
         void render();
@@ -24,8 +24,8 @@ class Bullet {
         int getWidth();
         int getHeight();
         
-        int getX();
-        int getY();
+        float getX();
+        float getY();
 
         Collider& getCollider();
 
@@ -42,15 +42,16 @@ class Bullet {
         const std::size_t _width;
 		const std::size_t _height;
 
-		const std::size_t _speed;
+		float _speed;
 
-        int _x;
-        int _y;
+        float _x;
+        float _y;
 
         double _angle;
 
-        double _dx;
-        double _dy;
+        float _dx;
+        float _dy;
+
         int _health;
 
         //Collider control

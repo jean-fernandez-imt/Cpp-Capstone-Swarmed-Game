@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "parameters.h"
 #include "game.h"
 
@@ -29,7 +27,7 @@ void Game::run() {
   SDL_Event e;
   bool running = true;
 
-  //Test
+  //Font (WIP)
   SDL_Color color = {235, 182, 38};
   //_testFont->loadFromRenderedText("Swarmed", color);
 
@@ -97,7 +95,7 @@ void Game::render() {
   _spaceshipGun->render();
   _enemyArmy->render();
 
-  //Test
+  //Render Fonts (WIP)
   // _testFont->render(10, 10);
 
   SDL_RenderPresent(_renderer->getRenderer());

@@ -57,7 +57,7 @@ int main(int argc, char* args[]) {
   backgroundTexture4.loadFromFile("../textures/space4.png");
   backgroundTexture5.loadFromFile("../textures/space5.png");
 
-  //Prepare Fonts
+  //Prepare Fonts (WIP)
   Font titleFont(
     "../fonts/space-mavericks/SpaceMavericks-qZo91.ttf",
     MAIN_TITLE_FONT_SIZE);

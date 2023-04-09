@@ -12,6 +12,7 @@
 #include "timer.h"
 #include "collider.h"
 #include "background.h"
+#include "font.h"
 
 //Controls the Game Mechanics
 class Game {
@@ -22,7 +23,8 @@ class Game {
       Player* spaceship,
       Gun* spaceshipGun,
       Army* enemyArmy,
-      Background* background);
+      Background* background,
+      Font* testFont);
       
     void run();
     int getScore();
@@ -52,6 +54,8 @@ class Game {
     //Backgrounds
     Background* _background;
     Texture* _selectedBackground;
+
+    Font* _testFont;
 };
 
 #endif

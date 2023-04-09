@@ -12,14 +12,14 @@ Player::Player(
       _texture(std::move(texture)),
       _width(PLAYER_WIDTH),
       _height(PLAYER_HEIGHT),
-      _vel(PLAYER_VELOCITY),
-      _posX(_screenWidth/2),
-      _posY(_screenHeight/2),
-      _angle(0),
-      _velX(0),
-      _velY(0),
+      _vel(static_cast<float>(PLAYER_VELOCITY)),
+      _posX(static_cast<float>(_screenWidth/2)),
+      _posY(static_cast<float>(_screenHeight/2)),
+      _angle(0.0),
+      _velX(0.0),
+      _velY(0.0),
       _hp(PLAYER_HP) {
-          _collider.r = _width/2;
+          _collider.r = static_cast<float>(_width/2);
           _collider.x = _posX;
           _collider.y = _posY;
       }
@@ -44,19 +44,25 @@ void Player::handleEvent(SDL_Event& e) {
 }
 
 void Player::updateAngle(SDL_Point aimPos) {
-    //Make a steadier aim
+    //Make a steadier angle
     if (aimPos.x == _posX) {
         if (aimPos.y >= _posY) {
-            _angle = 180;
+            _angle = 180.0;
         } else if (aimPos.y < _posY) {
-            _angle = 0;
+            _angle = 0.0;
+        }
+    } else if (aimPos.y == _posY) {
+        if (aimPos.x >= _posX) {
+            _angle = 90.0;
+        } else if (aimPos.x < _posX) {
+            _angle = 270.0;
         }
     } else {
         _angle = 
             (atan2((aimPos.y - _posY), (aimPos.x - _posX))
-            *180
+            *180.0
             /M_PI)
-            + 90;
+            + 90.0;
     }
 }
 
@@ -86,11 +92,11 @@ void Player::render() {
 	_texture.render(_posX - _width/2, _posY - _height/2, NULL, _angle);
 } 
 
-int Player::getPosX() {
+float Player::getPosX() {
     return _posX;
 }
 
-int Player::getPosY() {
+float Player::getPosY() {
     return _posY;
 }
 

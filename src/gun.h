@@ -19,7 +19,8 @@ class Gun {
         //Handles mouse event
 		void handleEvent(SDL_Event& e);
 
-        void updateGun();
+        void updateGun(SDL_Point aimPos);
+        void updateBullets(float timeStep);
 
         void render();
 
@@ -35,13 +36,11 @@ class Gun {
 
         std::deque<Bullet*> _bullets;
 
-        int _x;
-        int _y;
-        double _dx;
-        double _dy;
-        double _speed;
+        float _posX;
+        float _posY;
+        float _targetX;
+        float _targetY;
 
-        void updateTarget();
         void clearBullets();
 };
 

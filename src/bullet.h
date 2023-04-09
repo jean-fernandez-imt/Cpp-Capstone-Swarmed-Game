@@ -11,21 +11,21 @@ class Bullet {
             const std::size_t screenWidth, 
             const std::size_t screenHeight,
             Texture* texture,
-            int x,
-            int y,
-            double dx,
-            double dy,
-            double speed);
+            float posX,
+            float posY,
+            float targetX,
+            float targetY);
 
-        void fire();
+        void update(float timeStep);
+        void render();
 
         int getHealth();
 
         int getWidth();
         int getHeight();
         
-        int getX();
-        int getY();
+        float getX();
+        float getY();
 
         Collider& getCollider();
 
@@ -39,14 +39,20 @@ class Bullet {
         //Borrowed from Gun
         Texture* _texture;
 
-        int _width;
-        int _height;
+        const std::size_t _width;
+		const std::size_t _height;
 
-        int _x;
-        int _y;
-        double _dx;
-        double _dy;
-        double _speed;
+		float _speed;
+
+        float _posX;
+        float _posY;
+
+        float _targetX;
+        float _targetY;
+
+        float _speedX;
+        float _speedY;
+
         int _health;
 
         //Collider control

@@ -3,9 +3,9 @@
 
 //Circular collider data structure
 typedef struct stCollider {
-    int r;
-    int x;
-    int y;
+    float r;
+    float x;
+    float y;
 } Collider;
 
 #endif

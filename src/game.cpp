@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "parameters.h"
 #include "game.h"
 
@@ -9,13 +7,15 @@ Game::Game(
   Player* spaceship,
   Gun* spaceshipGun,
   Army* enemyArmy,
-  Background* background)
+  Background* background,
+  Font* testFont)
     : _renderer(renderer),
       _mark(mark),
       _spaceship(spaceship),
       _spaceshipGun(spaceshipGun),
       _enemyArmy(enemyArmy),
-      _background(background) {
+      _background(background),
+      _testFont(testFont) {
         //Select random Background
         _selectedBackground = _background->getRandomBackgound();
 
@@ -27,6 +27,10 @@ void Game::run() {
   SDL_Event e;
   bool running = true;
 
+  //Font (WIP)
+  SDL_Color color = {235, 182, 38};
+  //_testFont->loadFromRenderedText("Swarmed", color);
+
   while (running) {
     //Main Game Loop
     input(&e, &running);
@@ -36,18 +40,24 @@ void Game::run() {
 }
 
 void Game::input(SDL_Event* e, bool* running) {
+  //Out of HP: Game Over
+  if (_spaceship->getHP() <= 0) {
+    *running = false;
+  }
+
   //Handle events on queue
   while(SDL_PollEvent(e) != 0) {
     //User requests "Quit" or out of HP
-    if( e->type == SDL_QUIT || _spaceship->getHP() <= 0) {
+    if( e->type == SDL_QUIT) {
       *running = false;
     }
     //Handle inputs
     _mark->handleEvent(*e);
     _spaceship->handleEvent(*e);
     _spaceshipGun->handleEvent(*e);
-    _enemyArmy->spawn();
   }
+
+  _enemyArmy->spawn();
 }
 
 void Game::update(Timer* stepTimer) {
@@ -59,7 +69,8 @@ void Game::update(Timer* stepTimer) {
   _spaceship->updateAngle(_mark->getPosition());
 
   //Update the Gun's position and state
-  _spaceshipGun->updateGun();
+  _spaceshipGun->updateGun(_mark->getPosition());
+  _spaceshipGun->updateBullets(timeStep);
 
   //Update the enemy Army
   _enemyArmy->move(timeStep);
@@ -83,6 +94,9 @@ void Game::render() {
   _spaceship->render();
   _spaceshipGun->render();
   _enemyArmy->render();
+
+  //Render Fonts (WIP)
+  // _testFont->render(10, 10);
 
   SDL_RenderPresent(_renderer->getRenderer());
 }
@@ -121,14 +135,14 @@ bool Game::checkCollision(Collider& a, Collider& b) {
 	int totalRadiusSquared = a.r + b.r;
 	totalRadiusSquared = totalRadiusSquared*totalRadiusSquared;
 
-  /* Collision: If the distance between the centers of 
-  the circles is less than the sum of their radii */
-  if(distanceSquared(a.x, a.y, b.x, b.y) < (totalRadiusSquared)){
-      //The circles have collided
-      return true;
-  }
+    /* Collision: If the distance between the centers of 
+    the circles is less than the sum of their radii */
+    if(distanceSquared(a.x, a.y, b.x, b.y) < (totalRadiusSquared)){
+        //The circles have collided
+        return true;
+    }
 
-  return false;
+    return false;
 }
 
 double Game::distanceSquared(int x1, int y1, int x2, int y2) {

@@ -1,8 +1,8 @@
-# CPPND: Capstone - Swarmed Game
+# CPPND: Capstone - Swarmed 🚀️
 
 You and your crew have become the target of an alien enemy suicide squad. Don't let them get you! Do whatever it takes to survive. How many of them can you take down with you before the end?
 
-This repository is my version of the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was originally inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This repository is my version of the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). It was originally inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
 <img src="swarmed-game.gif"/>
 
@@ -12,10 +12,10 @@ The Capstone Project represents a chance to integrate what we've learned through
 
 As a final thought, I just would like to add that I had a great time building this project. Even when it is still far away to be a complete game, I really hope you enjoy it. 
 
-## How to Play
+## How to Play 🕹️
 Control the position of your spaceship with the "W", "A", "S", "D" keys, and fire with the Mouse Left Click. You count with unlimited ammo, so shoot until your heart is content!
 
-## Dependencies for Running Locally
+## Dependencies for Running Locally 🧩️
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
 * make >= 4.1 (Linux, Mac), 3.81 (Windows)
@@ -30,14 +30,15 @@ Control the position of your spaceship with the "W", "A", "S", "D" keys, and fir
   * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
-## Basic Build Instructions
+## Basic Build Instructions ⚒️
 
-1. Clone this repo.
+1. Clone this repository.
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./Swarmed`.
+>**Note:** If you happen to run this program with a Ubuntu distribution on a Jetson Nano or similar NVIDIA Jetson series products, the SDL2 library and extensions installed with `sudo apt install` might find some conflict with the D-BUS middleware when running after building. In order to work around this, you might need to download and build the libraries from source, or run the program with: `DBUS_FATAL_WARNINGS=0 ./Swarmed`
 
-## Special Thanks
+## Special Thanks 🙇️
 * OpenGameArt.org: oglsdl - [Scope](https://opengameart.org/content/aim) texture.
 * OpenGameArt.org: Gumichan01 - [Bullet](https://opengameart.org/content/tx-bullet-0) texture.
 * OpenGameArt.org: Tummyache - [Spaceship](https://opengameart.org/content/purple-space-ship) texture.
@@ -51,7 +52,7 @@ Control the position of your spaceship with the "W", "A", "S", "D" keys, and fir
 * LazyFooProductions: [SDL Tutorials](https://lazyfoo.net/tutorials/SDL/index.php)
 * ParallelRealities: [SDL2 Game Tutorials](https://www.parallelrealities.co.uk/tutorials/)
 
-## CC Attribution-ShareAlike 4.0 International
+## CC Attribution-ShareAlike 4.0 International 🛡️
 
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 

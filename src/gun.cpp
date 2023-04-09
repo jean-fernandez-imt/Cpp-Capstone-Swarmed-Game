@@ -12,11 +12,10 @@ Gun::Gun(
         _screenHeight(screenHeight),
         _texture(std::move(texture)),
         _player(player),
-        _x(0),
-        _y(0),
-        _dx(0.0),
-        _dy(0.0),
-        _speed(GUN_BULLET_SPEED) {}
+        _posX(0.0),
+        _posY(0.0),
+        _targetX(0.0),
+        _targetY(0.0) {}
 
 void Gun::handleEvent(SDL_Event& e) {
 	if(e.type == SDL_MOUSEBUTTONDOWN) {
@@ -25,24 +24,30 @@ void Gun::handleEvent(SDL_Event& e) {
                 _screenWidth,
                 _screenHeight,
                 &_texture,
-                _x,
-                _y,
-                _dx,
-                _dy,
-                _speed));
+                _posX,
+                _posY,
+                _targetX,
+                _targetY));
 	}
 }
 
-void Gun::updateGun() {
-    _x = _player->getPosX();
-    _y = _player->getPosY();
-    updateTarget();
+void Gun::updateGun(SDL_Point aimPos) {
+    _posX = _player->getPosX();
+    _posY = _player->getPosY();
+
+    _targetX = static_cast<float>(aimPos.x);
+    _targetY = static_cast<float>(aimPos.y);
+
     clearBullets();
 }
 
-void Gun::updateTarget() {
-    _dx = (sin((_player->getAngle())*M_PI/180.0))*_speed;
-    _dy = -(cos((_player->getAngle())*M_PI/180.0))*_speed;
+void Gun::updateBullets(float timeStep) {
+    //Update the position of the remianing bullets
+    if (!_bullets.empty()) {
+        for (Bullet* bullet: _bullets) {
+            bullet->update(timeStep);
+        }
+    }
 }
 
 void Gun::clearBullets() {
@@ -61,7 +66,7 @@ void Gun::render() {
     //Render the remaining bullets
     if (!_bullets.empty()) {
         for (Bullet* bullet: _bullets) {
-            bullet->fire();
+            bullet->render();
         }
     }
 }

@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 #include <string>
 
@@ -20,6 +21,11 @@ class Texture {
 		Texture &operator=(Texture &&source);
 
 		void loadFromFile(std::string path);
+
+		void loadFromRenderedText(
+			TTF_Font* font, 
+			std::string text, 
+			SDL_Color color);
 
 		void render(
             int x, 
@@ -42,7 +48,7 @@ class Texture {
 		std::size_t _height;
 
 		//Deallocates texture
-		void release();
+		void releaseTexture();
 };
 
 #endif

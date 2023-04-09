@@ -9,16 +9,18 @@ Texture::Texture(SDL_Renderer* renderer): _renderer(renderer) {
 }
 
 Texture::~Texture() {
-	release();
+	//Renderer shall be released only at the end
+	releaseTexture();
+	_renderer = NULL;
 }
 
 //Copy constructor
 Texture::Texture(const Texture &source) {
 	std::cout << "Texture: Copy constructor called." << std::endl;
-	_texture = source._texture;
+	_texture = NULL;
 	_renderer = source._renderer;
-	_width = source._width;
-	_height = source._height;
+	_width = 0;
+	_height = 0;
 }
 
 //Copy assignment operator
@@ -27,10 +29,10 @@ Texture &Texture::operator=(const Texture &source) {
 	if (this == &source) {
 		return *this;
 	}
-	_texture = source._texture;
+	_texture = NULL;
 	_renderer = source._renderer;
-	_width = source._width;
-	_height = source._height;
+	_width = 0;
+	_height = 0;
 }
 
 //Move constructor
@@ -62,12 +64,11 @@ Texture &Texture::operator=(Texture &&source) {
 	source._height = 0;
 }
 
-void Texture::release() {
+void Texture::releaseTexture() {
 	//Free texture if it exists
 	if (_texture != NULL) {
 		SDL_DestroyTexture(_texture);
 		_texture = NULL;
-        _renderer = NULL;
 		_width = 0;
 		_height = 0;
 	}
@@ -75,7 +76,7 @@ void Texture::release() {
 
 void Texture::loadFromFile(std::string path) {
 	//Get rid of preexisting texture
-	release();
+	releaseTexture();
 
 	//The final texture
 	SDL_Texture* newTexture = NULL;
@@ -117,6 +118,39 @@ void Texture::loadFromFile(std::string path) {
     SDL_FreeSurface(loadedSurface);
 
 	_texture = newTexture;
+}
+
+void Texture::loadFromRenderedText(
+	TTF_Font* font, 
+	std::string text, 
+	SDL_Color color) {
+	//Get rid of preexisting texture
+	releaseTexture();
+
+	//Render text surface
+	SDL_Surface* textSurface = 
+        TTF_RenderText_Solid(
+            font,
+            text.c_str(),
+            color);
+
+	if (textSurface == NULL) {
+        std::cerr << "Unable to render text surface!" << std::endl;
+        std::cerr << "SDL2_TTF_Error: " << TTF_GetError() << std::endl;
+	}
+
+    //Create texture from surface pixels
+    _texture = SDL_CreateTextureFromSurface(_renderer, textSurface);
+    
+    if (_texture == NULL) {
+        std::cerr << "Unable to create texture from rendered text!" << std::endl;
+        std::cerr << "SDL2_Error: " << SDL_GetError() << std::endl;
+    } else {
+		_width = textSurface->w;
+		_height = textSurface->h;
+	}
+
+    SDL_FreeSurface(textSurface);
 }
 
 void Texture::render(

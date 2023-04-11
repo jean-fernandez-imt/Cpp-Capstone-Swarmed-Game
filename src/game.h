@@ -24,7 +24,7 @@ class Game {
       Gun* spaceshipGun,
       Army* enemyArmy,
       Background* background,
-      Font* testFont);
+      Font* titleFont);
       
     void run();
     int getScore();
@@ -55,7 +55,8 @@ class Game {
     Background* _background;
     Texture* _selectedBackground;
 
-    Font* _testFont;
+    //Fonts
+    Font* _titleFont;
 };
 
 #endif

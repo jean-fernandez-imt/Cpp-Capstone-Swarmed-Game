@@ -8,14 +8,14 @@ Game::Game(
   Gun* spaceshipGun,
   Army* enemyArmy,
   Background* background,
-  Font* testFont)
+  Font* titleFont)
     : _renderer(renderer),
       _mark(mark),
       _spaceship(spaceship),
       _spaceshipGun(spaceshipGun),
       _enemyArmy(enemyArmy),
       _background(background),
-      _testFont(testFont) {
+      _titleFont(titleFont) {
         //Select random Background
         _selectedBackground = _background->getRandomBackgound();
 
@@ -29,7 +29,7 @@ void Game::run() {
 
   //Font (WIP)
   SDL_Color color = {235, 182, 38};
-  //_testFont->loadFromRenderedText("Swarmed", color);
+  _titleFont->loadFromRenderedText("Swarmed", color);
 
   while (running) {
     //Main Game Loop
@@ -96,7 +96,7 @@ void Game::render() {
   _enemyArmy->render();
 
   //Render Fonts (WIP)
-  // _testFont->render(10, 10);
+  _titleFont->render(10, 10);
 
   SDL_RenderPresent(_renderer->getRenderer());
 }

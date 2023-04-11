@@ -57,13 +57,15 @@ int main(int argc, char* args[]) {
   backgroundTexture4.loadFromFile("../textures/space4.png");
   backgroundTexture5.loadFromFile("../textures/space5.png");
 
-  //Prepare Fonts (WIP)
+  //Prepare Fonts
   Font titleFont(
     "../fonts/space-mavericks/SpaceMavericks-qZo91.ttf",
-    MAIN_TITLE_FONT_SIZE);
+    MAIN_TITLE_FONT_SIZE,
+    rendererPtr);
   Font highscoresFont(
     "../fonts/press-start-2p/PressStart2P.ttf",
-    MAIN_HIGHSCORES_FONT_SIZE);
+    MAIN_HIGHSCORES_FONT_SIZE,
+    rendererPtr);
 
   //Create Game elements
   Player spaceship(
